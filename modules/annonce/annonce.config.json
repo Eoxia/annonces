@@ -1,0 +1,14 @@
+{
+	"name": "Annonce",
+	"slug": "annonce",
+	"version": "2.0.0",
+	"path": "modules/annonce",
+	"dependencies_func": [
+		"\\annonces\\is_acf"
+	],
+	"dependencies": {
+		"action": {},
+		"filter": {},
+		"shortcode": {}
+	}
+}
