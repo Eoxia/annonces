@@ -61,7 +61,7 @@ class Annonce_Actions {
 			'publicly_queryable'  => true,
 			'capability_type'     => 'post',
 			'rewrite'             => array(
-				'slug' => get_option( 'mon_option', 'announce' ),
+				'slug' => get_option( 'permalink_annonce', 'announce' ),
 			),
 		);
 		register_post_type( 'announce', $args );

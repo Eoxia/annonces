@@ -42,7 +42,6 @@ class Annonces_Util extends \eoxia\Singleton_Util {
 				'name'     => 'Advanced Custom Fields',
 				'slug'     => 'advanced-custom-fields',
 				'required' => true,
-				'version'  => '5.0.0',
 			),
 		);
 

@@ -63,10 +63,10 @@ class Option_Action {
 	public function callback_save_annonces_google_key() {
 		check_ajax_referer( 'save_annonces_google_key' );
 		$google_key = ! empty( $_POST['annonces_google_key'] ) ? sanitize_text_field( $_POST['annonces_google_key'] ) : '';
-		$mon_option = ! empty( $_POST['mon_option'] ) ? sanitize_title( $_POST['mon_option'] ) : '';
+		$permalink_annonce = ! empty( $_POST['permalink_annonce'] ) ? sanitize_title( $_POST['permalink_annonce'] ) : '';
 
 		update_option( 'annonces_google_key', $google_key );
-		update_option( 'mon_option', $mon_option );
+		update_option( 'permalink_annonce', $permalink_annonce );
 		wp_send_json_success();
 	}
 }

@@ -19,28 +19,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<h1><?php esc_html_e( 'Announces options', 'annonces' ); ?></h1>
 
 	<div class="wpeo-form">
-	<input type="hidden" name="action" value="save_annonces_google_key" />
-	<?php wp_nonce_field( 'save_annonces_google_key' ); ?>
+		<input type="hidden" name="action" value="save_annonces_google_key" />
+		<?php wp_nonce_field( 'save_annonces_google_key' ); ?>
 
-	<div class="form-element">
-		<span class="form-label"><?php esc_html_e( 'Domaine de l\'email', 'digirisk' ); ?></span>
+		<div class="form-element">
+			<span class="form-label"><?php esc_html_e( 'Google api key', 'digirisk' ); ?></span>
+			<label class="form-field-container">
+				<input type="text" name="annonces_google_key" class="form-field" value="<?php echo esc_attr( get_option( 'annonces_google_key', '' ) ); ?>" style="background: #fff;" />
+			</label>
+		</div>
 
-		<label class="form-field-container">
-			<input type="text" name="annonces_google_key" class="form-field" value="<?php echo esc_attr( get_option( 'annonces_google_key', '' ) ); ?>" />
-		</label>
+		<div class="form-element">
+			<span class="form-label"><?php esc_html_e( 'Permalink', 'digirisk' ); ?></span>
+			<label class="form-field-container">
+				<input type="text" name="permalink_annonce" class="form-field" value="<?php echo esc_attr( get_option( 'permalink_annonce', 'announce' ) ); ?>" style="background: #fff;" />
+			</label>
+			<span class="form-sublabel"><?php esc_html_e( 'You have to reload website permalinks after changing', 'annonces' ); ?></span>
+		</div>
+
+		<div class="wpeo-button button-blue action-input button-progress" data-parent="wpeo-form">
+			<span><?php esc_html_e( 'Enregistrer les modifications', 'digirisk' ); ?></span>
+		</div>
 	</div>
-
-	<div class="form-element">
-		<span class="form-label"><?php esc_html_e( 'Domaine de l\'email', 'digirisk' ); ?></span>
-		<p>http://127.0.0.1/eoxia-module/wp-admin/options-permalink.php</p>
-
-		<label class="form-field-container">
-			<input type="text" name="mon_option" class="form-field" value="<?php echo esc_attr( get_option( 'mon_option', 'announce' ) ); ?>" />
-		</label>
-	</div>
-
-	<div class="wpeo-button button-main action-input button-progress" data-parent="wpeo-form">
-		<span><?php esc_html_e( 'Enregistrer les modifications', 'digirisk' ); ?></span>
-	</div>
-</div>
 </div>

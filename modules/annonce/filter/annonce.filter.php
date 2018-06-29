@@ -25,7 +25,7 @@ class Annonce_Filters {
 	 * @version 2.0.0
 	 */
 	public function __construct() {
-		add_filter( 'acf/settings/load_json', array( $this, 'wp_star_bloc_json_load' ) );
+		add_filter( 'acf/settings/load_json', array( $this, 'annonces_annonce_json_load' ) );
 		add_filter( 'single_template', array( $this, 'get_custom_post_type_template' ), 11 );
 	}
 
@@ -36,8 +36,8 @@ class Annonce_Filters {
 	 * @param  Array $paths Acf folders.
 	 * @return Array $paths Acf folders
 	 */
-	public function wp_star_bloc_json_load( $paths ) {
-		$paths[] = PLUGIN_ANNONCES_PATH . 'module/star/asset/json';
+	public function annonces_annonce_json_load( $paths ) {
+		$paths[] = PLUGIN_ANNONCES_PATH . 'modules/annonce/asset/json';
 		return $paths;
 	}
 
