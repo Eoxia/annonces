@@ -36,7 +36,7 @@ window.eoxiaJS.annonces.annonce.event = function() {
  * @return {void}
  */
 window.eoxiaJS.annonces.annonce.initMap = function() {
-	var $map = jQuery( '.annonces-map-wrapper' );
+	var $map = jQuery( '#annonces-map-wrapper' );
 
 	jQuery( $map ).each(function() {
 		window.eoxiaJS.annonces.annonce.createMap( jQuery( this ) );
@@ -54,25 +54,27 @@ window.eoxiaJS.annonces.annonce.createMap = function( map ) {
 	if ( map == undefined || map.length == 0 ) return;
 
 	var $map = map;
-	var france = {lat: 48.856614, lng: 2.352222};
+	// var france = {lat: 48.856614, lng: 2.352222};
 	var $markers = jQuery( $map ).find( 'marker' );
+	var myLatlng = new google.maps.LatLng($markers.attr('lat'),$markers.attr('lng'));
 	var $listMarker = [];
 	var $htmlMarker = [];
-	var $gMap = new google.maps.Map( jQuery( $map ).find( '#annonces-google-map' )[0], {zoom: 8, center: france} );
+	var $gMap = new google.maps.Map( jQuery( $map ).find( '#annonces-google-map' )[0], {zoom: 8, center: myLatlng} );
 
 
 	jQuery( $markers ).each(function() {
 		var marker = window.eoxiaJS.annonces.annonce.createMarker( $gMap, jQuery( this ) );
 		var infoWindow = window.eoxiaJS.annonces.annonce.createInfoWindow( jQuery( this ) );
 
-		marker.addListener('click', function() {
-			infoWindow.open($map, marker);
-		});
+		if ( jQuery( this ).html().length != 0 ) {
+			marker.addListener('click', function() {
+				infoWindow.open($map, marker);
+			});
+		}
 
 		$listMarker.push( marker );
 		$htmlMarker.push( jQuery( this ) );
 	});
-
 
 	jQuery( '.annonces-taxonomies .taxonomy-label' ).on( 'click', function() {
 		if ( jQuery( this ).hasClass( 'active' ) ) {
@@ -100,7 +102,11 @@ window.eoxiaJS.annonces.annonce.createMarker = function( map, marker ) {
 	var $map = map;
 	var $marker = marker;
 	var myLatLng = {lat: Number( $marker.attr('lat') ), lng: Number( $marker.attr('lng') )};
-	var iconUrl = annonces_data.url + '/modules/annonce/asset/img/pin-' + $marker.attr('pin') + '.png'; /** annonces_data is obtained with php enqueue */
+	if ( $marker.attr('pin') != undefined ) {
+		var iconUrl = annonces_data.url + '/modules/annonce/asset/img/pin-' + $marker.attr('pin') + '.png'; /** annonces_data is obtained with php enqueue */
+	} else {
+		var iconUrl = annonces_data.url + '/modules/annonce/asset/img/pin-red.png';
+	}
 
 	return new google.maps.Marker({
 		position: myLatLng,

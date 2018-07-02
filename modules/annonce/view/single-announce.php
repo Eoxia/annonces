@@ -21,19 +21,47 @@ defined( 'ABSPATH' ) || exit; ?>
 		<?php
 		while ( have_posts() ) : the_post();
 
-			/** Main content */
-			the_content();
+			?>
+			<div class="wpeo-gridlayout grid-2">
+				<figure class="annonce-thumbnail">
+					<?php the_post_thumbnail(); ?>
+				</figure>
+				<div class="annonce-content">
+					<h1 class="page-title"><?php the_title(); ?></h1>
+					<?php the_content(); ?>
 
-			$test = get_field( 'adress' );
-			// echo '<pre>'; print_r($test); echo '</pre>';
+					<ul class="annonce-microdatas">
+						<?php
+						$email = get_field( 'email' );
+						if ( ! empty( $email ) ) : ?>
+							<li class="annonce-data"><i class="fas fa-envelope"></i> <strong><?php esc_html_e( 'Email', 'annonces' ); ?></strong> : <?php the_field( 'email' ); ?></li> <?php
+						endif; ?>
+
+						<?php
+						$telephone = get_field( 'telephone' );
+						if ( ! empty( $telephone ) ) : ?>
+						<li class="annonce-data"><i class="fas fa-mobile-alt"></i> <strong><?php esc_html_e( 'Phone number', 'annonces' ); ?></strong> : <?php the_field( 'telephone' ); ?></li> <?php
+						endif; ?>
+					</ul>
+				</div>
+			</div>
+
+			<?php $address = get_field( 'address' ); ?>
+			<div id="annonces-map-wrapper">
+				<div id="annonces-google-map">
+					<markers>
+						<marker id="<?php the_ID(); ?>"
+						lat="<?php echo esc_html( $address['lat'] ); ?>"
+						lng="<?php echo esc_html( $address['lng'] ); ?>"></marker>
+					</markers>
+				</div>
+			</div>
+			<?php
 
 			/** Comments */
 			if ( comments_open() || get_comments_number() ) :
 				comments_template();
 			endif;
-
-			/** Navigation */
-			the_post_navigation();
 
 		endwhile; // End of the loop.
 		?>
@@ -42,5 +70,5 @@ defined( 'ABSPATH' ) || exit; ?>
 	</div><!-- #primary -->
 
 <?php
-get_sidebar( 'blog' );
+get_sidebar();
 get_footer();

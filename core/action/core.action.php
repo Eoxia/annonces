@@ -25,9 +25,12 @@ class Core_Action {
 	 * @version 2.0.0
 	 */
 	public function __construct() {
-		add_action( 'admin_enqueue_scripts', array( $this, 'callback_admin_enqueue_scripts' ), 11 );
+		// add_action( 'admin_enqueue_scripts', array( $this, 'callback_admin_enqueue_scripts' ), 11 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'callback_front_enqueue_scripts' ), 11 );
 		add_action( 'tgmpa_register', array( Annonces_Util::g(), 'annonces_register_required_plugins' ), 11 );
+		add_action( 'admin_notices', array( $this, 'acf_version_notice' ), 11 );
+
+		add_action( 'init', array( $this, 'load_languages' ) );
 	}
 
 	/**
@@ -39,8 +42,6 @@ class Core_Action {
 	 * @return void nothing
 	 */
 	public function callback_admin_enqueue_scripts() {
-		// wp_enqueue_style( 'annonces-backend-style', PLUGIN_ANNONCES_URL . 'core/asset/css/style.css', array(), \eoxia\Config_Util::$init['annonces']->version );
-		// wp_enqueue_script( 'annonces-backend-script', PLUGIN_ANNONCES_URL . 'core/asset/js/backend.min.js', array(), \eoxia\Config_Util::$init['annonces']->version );
 	}
 
 	/**
@@ -63,6 +64,35 @@ class Core_Action {
 		// $api_key = 'AIzaSyAjNX-2ycIAskm4GmdWpmYhSG0XCHB2KgY';
 		$api_key = get_option( 'annonces_google_key' );
 		wp_enqueue_script( 'annonces-google-map-api', 'https://maps.googleapis.com/maps/api/js?key=' . $api_key, array(), '', true );
+	}
+
+	/**
+	 * Alert user to update ACF version
+	 *
+	 * @since 2.0.0
+	 * @return void
+	 */
+	public function acf_version_notice() {
+		if ( ! is_acf() ) return;
+
+		$acf_datas = get_plugin_data( PLUGIN_ANNONCES_PATH . '/../advanced-custom-fields/acf.php' );
+		if ( (int) substr( $acf_datas['Version'], 0, 1 ) < 5 ) {
+			?>
+			<div class="notice notice-error">
+				<p><?php esc_html_e( 'Annonces plugin work with ACF version 5+. Please update !', 'annonces' ); ?></p>
+			</div>
+			<?php
+		}
+	}
+
+	/**
+	 * Initialise le fichier MO
+	 *
+	 * @since 0.1.0
+	 * @version 0.1.0
+	 */
+	public function load_languages() {
+		load_plugin_textdomain( 'annonces', false, PLUGIN_ANNONCES_DIR . '/core/asset/languages/' );
 	}
 }
 
