@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Annonces v2.x.x\n"
-"POT-Creation-Date: 2018-07-02 11:06+0200\n"
-"PO-Revision-Date: 2018-07-02 11:21+0200\n"
+"POT-Creation-Date: 2018-07-02 11:24+0200\n"
+"PO-Revision-Date: 2018-07-02 11:24+0200\n"
 "Last-Translator: \n"
 "Language-Team: Eoxia dev@eoxia.com\n"
 "Language: fr\n"
@@ -163,14 +163,18 @@ msgstr "Options de Annonces"
 msgid "Google api key"
 msgstr "Clé API Google"
 
-#: modules/option/view/main.view.php:33
+#: modules/option/view/main.view.php:30
+msgid "Obtain a google map api key"
+msgstr "Obtenir une clé API Google Map"
+
+#: modules/option/view/main.view.php:34
 msgid "Permalink"
 msgstr "Permalien"
 
-#: modules/option/view/main.view.php:37
+#: modules/option/view/main.view.php:38
 msgid "You have to reload website permalinks after changing"
 msgstr "Vous devrez par la suite mettre à jour les permaliens de votre site"
 
-#: modules/option/view/main.view.php:41
+#: modules/option/view/main.view.php:42
 msgid "Update"
 msgstr "Mise à jour"

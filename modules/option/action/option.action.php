@@ -1,6 +1,6 @@
 <?php
 /**
- * Action of Option module.
+ * Action of Option Module.
  *
  * @author    Eoxia <dev@eoxia.com>
  * @copyright (c) 2006-2018 Eoxia <dev@eoxia.com>
@@ -11,9 +11,7 @@
 
 namespace annonces;
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) || exit;
 
 /**
  * Action of "Hello_World" module.
@@ -62,7 +60,7 @@ class Option_Action {
 	 */
 	public function callback_save_annonces_google_key() {
 		check_ajax_referer( 'save_annonces_google_key' );
-		$google_key = ! empty( $_POST['annonces_google_key'] ) ? sanitize_text_field( $_POST['annonces_google_key'] ) : '';
+		$google_key        = ! empty( $_POST['annonces_google_key'] ) ? sanitize_text_field( $_POST['annonces_google_key'] ) : '';
 		$permalink_annonce = ! empty( $_POST['permalink_annonce'] ) ? sanitize_title( $_POST['permalink_annonce'] ) : '';
 
 		update_option( 'annonces_google_key', $google_key );

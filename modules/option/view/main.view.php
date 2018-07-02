@@ -1,6 +1,6 @@
 <?php
 /**
- * Main view of Option module.
+ * Main view of Option Module.
  *
  * @author    Eoxia <dev@eoxia.com>
  * @copyright (c) 2006-2018 Eoxia <dev@eoxia.com>
@@ -11,9 +11,7 @@
 
 namespace annonces;
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-} ?>
+defined( 'ABSPATH' ) || exit; ?>
 
 <div class="wrap wpeo-wrap">
 	<h1><?php esc_html_e( 'Announces options', 'annonces' ); ?></h1>
@@ -23,14 +21,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php wp_nonce_field( 'save_annonces_google_key' ); ?>
 
 		<div class="form-element">
-			<span class="form-label"><?php esc_html_e( 'Google api key', 'digirisk' ); ?></span>
+			<span class="form-label"><?php esc_html_e( 'Google api key', 'annonces' ); ?></span>
 			<label class="form-field-container">
 				<input type="text" name="annonces_google_key" class="form-field" value="<?php echo esc_attr( get_option( 'annonces_google_key', '' ) ); ?>" style="background: #fff;" />
 			</label>
+			<span class="form-sublabel"><a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank"><?php esc_html_e( 'Obtain a google map api key', 'annonces' ); ?></a></span>
 		</div>
 
 		<div class="form-element">
-			<span class="form-label"><?php esc_html_e( 'Permalink', 'digirisk' ); ?></span>
+			<span class="form-label"><?php esc_html_e( 'Permalink', 'annonces' ); ?></span>
 			<label class="form-field-container">
 				<input type="text" name="permalink_annonce" class="form-field" value="<?php echo esc_attr( get_option( 'permalink_annonce', 'announce' ) ); ?>" style="background: #fff;" />
 			</label>
