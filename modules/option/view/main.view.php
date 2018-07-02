@@ -38,7 +38,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</div>
 
 		<div class="wpeo-button button-blue action-input button-progress" data-parent="wpeo-form">
-			<span><?php esc_html_e( 'Enregistrer les modifications', 'digirisk' ); ?></span>
+			<span><?php esc_html_e( 'Update', 'digirisk' ); ?></span>
 		</div>
 	</div>
 </div>

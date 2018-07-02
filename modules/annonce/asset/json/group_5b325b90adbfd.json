@@ -3,24 +3,6 @@
         "title": "Annonces - défaut",
         "fields": [
             {
-                "key": "field_5b325d8a5b537",
-                "label": "Adresses",
-                "name": "address",
-                "type": "google_map",
-                "instructions": "",
-                "required": 1,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "center_lat": "",
-                "center_lng": "",
-                "zoom": "",
-                "height": ""
-            },
-            {
                 "key": "field_5b339eaa28564",
                 "label": "Email",
                 "name": "email",

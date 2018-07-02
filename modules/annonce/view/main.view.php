@@ -13,7 +13,7 @@ namespace annonces;
 
 defined( 'ABSPATH' ) || exit; ?>
 
-<div class="annonces-map-wrapper">
+<div id="annonces-map-wrapper">
 	<div id="annonces-google-map">
 		<markers>
 			<?php \eoxia\View_Util::exec( 'annonces', 'annonce', 'main-markers', array( 'annonces_map_query' => $annonces_map_query ) ); ?>
