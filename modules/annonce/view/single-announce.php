@@ -63,9 +63,6 @@ defined( 'ABSPATH' ) || exit; ?>
 				comments_template();
 			endif;
 
-			/** Navigation */
-			the_post_navigation();
-
 		endwhile; // End of the loop.
 		?>
 
