@@ -28,16 +28,8 @@ defined( 'ABSPATH' ) || exit; ?>
 			<span class="form-sublabel"><a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank"><?php esc_html_e( 'Obtain a google map api key', 'annonces' ); ?></a></span>
 		</div>
 
-		<div class="form-element">
-			<span class="form-label"><?php esc_html_e( 'Permalink', 'annonces' ); ?></span>
-			<label class="form-field-container">
-				<input type="text" name="permalink_annonce" class="form-field" value="<?php echo esc_attr( get_option( 'permalink_annonce', 'announce' ) ); ?>" style="background: #fff;" />
-			</label>
-			<span class="form-sublabel"><?php esc_html_e( 'You have to reload website permalinks after changing', 'annonces' ); ?></span>
-		</div>
-
 		<div class="wpeo-button button-blue action-input button-progress" data-parent="wpeo-form">
-			<span><?php esc_html_e( 'Update', 'digirisk' ); ?></span>
+			<span><?php esc_html_e( 'Update', 'annonces' ); ?></span>
 		</div>
 	</div>
 </div>

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Annonces v2.x.x\n"
-"POT-Creation-Date: 2018-07-02 11:24+0200\n"
-"PO-Revision-Date: 2018-07-02 11:24+0200\n"
+"POT-Creation-Date: 2018-07-02 17:49+0200\n"
+"PO-Revision-Date: 2018-07-02 17:49+0200\n"
 "Last-Translator: \n"
 "Language-Team: Eoxia dev@eoxia.com\n"
 "Language: fr\n"
@@ -129,7 +129,8 @@ msgstr "Tous les plugins ont été installés et activés : %s."
 
 #: modules/annonce/action/annonce.action.php:43
 #: modules/annonce/shortcode/annonce.shortcode.php:91
-#: modules/option/action/option.action.php:42
+#: modules/option/action/option.action.php:41
+#: modules/option/action/option.action.php:77
 msgid "Announces"
 msgstr "Annonces"
 
@@ -155,26 +156,25 @@ msgstr "Numéro de téléphone"
 msgid "See"
 msgstr "Voir"
 
-#: modules/option/view/main.view.php:19
+#: modules/option/action/option.action.php:84
+msgid "Permalink Announce"
+msgstr "Permalien de Annonces"
+
+#: modules/option/view/main.view.php:17
 msgid "Announces options"
 msgstr "Options de Annonces"
 
-#: modules/option/view/main.view.php:26
+#: modules/option/view/main.view.php:24
 msgid "Google api key"
 msgstr "Clé API Google"
 
-#: modules/option/view/main.view.php:30
+#: modules/option/view/main.view.php:28
 msgid "Obtain a google map api key"
 msgstr "Obtenir une clé API Google Map"
 
-#: modules/option/view/main.view.php:34
-msgid "Permalink"
-msgstr "Permalien"
-
-#: modules/option/view/main.view.php:38
-msgid "You have to reload website permalinks after changing"
-msgstr "Vous devrez par la suite mettre à jour les permaliens de votre site"
-
-#: modules/option/view/main.view.php:42
+#: modules/option/view/main.view.php:32
 msgid "Update"
 msgstr "Mise à jour"
+
+#~ msgid "You have to reload website permalinks after changing"
+#~ msgstr "Vous devrez par la suite mettre à jour les permaliens de votre site"
