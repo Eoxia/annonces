@@ -17,11 +17,11 @@ Annonces is a WordPress plugin. It display announces posted in your WordPress in
 ## How to use
 1) Download the plugin
 2) Active the plugin
-3) Follow the information
-4) Create your firt annonce
-5) choose the category and color
+3) Follow the informations
+4) Create your first annonce
+5) Choose the category, pin-color
 6) View you annonce
-7) to view all the annonces put the shortcode in a page
+7) View all the annonces put the shortcode in a page
 
 ### Shortcodes
 [annonces] : Display the Google Map in a page with the shortcode :
