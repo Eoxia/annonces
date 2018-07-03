@@ -4,9 +4,9 @@ Annonces is a WordPress plugin. It display announces posted in your WordPress in
 
 ## Getting Started
 ### Prerequisites
-CMS : https://wordpress.org/
-Plugin : https://fr.wordpress.org/plugins/advanced-custom-fields/
-GoogleMaps : https://developers.google.com/maps/documentation/javascript/get-api-key
+- CMS : https://wordpress.org/
+- Plugin : https://fr.wordpress.org/plugins/advanced-custom-fields/
+- GoogleMaps : https://developers.google.com/maps/documentation/javascript/get-api-key
 
 ### Installing
 - In your backadmin, go to "Plugins" pannel
