@@ -4,7 +4,9 @@ Annonces is a WordPress plugin. It display announces posted in your WordPress in
 
 ## Getting Started
 ### Prerequisites
-You need a website on WordPress CMS.
+CMS : https://wordpress.org/
+Plugin : https://fr.wordpress.org/plugins/advanced-custom-fields/
+GoogleMaps : https://developers.google.com/maps/documentation/javascript/get-api-key
 
 ### Installing
 - In your backadmin, go to "Plugins" pannel
@@ -13,12 +15,17 @@ You need a website on WordPress CMS.
 - Activate plugins Annonces and ACF
 
 ## How to use
+1) Download the plugin
+2) Active the plugin
+3) Follow the information
+4) Create your firt annonce
+5) choose the category and color
+6) View you annonce
+7) to view all the annonces put the shortcode in a page
 
 ### Shortcodes
-Display the Google Map in a page with the shortcode :
-```
-[annonces]
-```
+[annonces] : Display the Google Map in a page with the shortcode :
+
 ### Filters
 #### Change metadatas in infowindow of map
 ```
