@@ -8,6 +8,7 @@
 		"action": {},
 		"class": {},
 		"util": {},
-		"helper": {}
+		"helper": {},
+		"filter" : {}
 	}
 }

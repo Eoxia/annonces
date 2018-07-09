@@ -22,7 +22,6 @@ class Annonce_Actions {
 	 * Constructor
 	 *
 	 * @since 2.0.0
-	 * @version 2.0.0
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'annonces_generate_post_type' ), 11 );
