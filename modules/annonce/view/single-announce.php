@@ -34,28 +34,35 @@ defined( 'ABSPATH' ) || exit; ?>
 						<?php
 						$email = get_field( 'email' );
 						if ( ! empty( $email ) ) : ?>
-							<li class="annonce-data"><i class="fas fa-envelope"></i> <strong><?php esc_html_e( 'Email', 'annonces' ); ?></strong> : <?php the_field( 'email' ); ?></li> <?php
+							<li class="annonce-data"><i class="fas fa-envelope"></i> <strong><?php esc_html_e( 'Email', 'annonces' ); ?></strong> : <?php echo esc_html( $email ); ?></li> <?php
 						endif; ?>
 
 						<?php
 						$telephone = get_field( 'telephone' );
 						if ( ! empty( $telephone ) ) : ?>
-						<li class="annonce-data"><i class="fas fa-mobile-alt"></i> <strong><?php esc_html_e( 'Phone number', 'annonces' ); ?></strong> : <?php the_field( 'telephone' ); ?></li> <?php
+						<li class="annonce-data"><i class="fas fa-mobile-alt"></i> <strong><?php esc_html_e( 'Phone number', 'annonces' ); ?></strong> : <?php echo esc_html( $telephone ); ?></li> <?php
+						endif; ?>
+
+						<?php
+						$address = get_field( 'address' );
+						if ( ! empty( $address ) ) : ?>
+						<li class="annonce-data"><i class="fas fa-map-marker-alt"></i> <strong><?php esc_html_e( 'Address', 'annonces' ); ?></strong> : <?php echo esc_html( $address['address'] ); ?></li> <?php
 						endif; ?>
 					</ul>
 				</div>
 			</div>
 
-			<?php $address = get_field( 'address' ); ?>
-			<div id="annonces-map-wrapper">
-				<div id="annonces-google-map">
-					<markers>
-						<marker id="<?php the_ID(); ?>"
-						lat="<?php echo esc_html( $address['lat'] ); ?>"
-						lng="<?php echo esc_html( $address['lng'] ); ?>"></marker>
-					</markers>
+			<?php if ( ! empty( $address ) ) : ?>
+				<div id="annonces-map-wrapper">
+					<div id="annonces-google-map">
+						<markers>
+							<marker id="<?php the_ID(); ?>"
+							lat="<?php echo esc_html( $address['lat'] ); ?>"
+							lng="<?php echo esc_html( $address['lng'] ); ?>"></marker>
+						</markers>
+					</div>
 				</div>
-			</div>
+			<?php endif; ?>
 			<?php
 
 			/** Comments */

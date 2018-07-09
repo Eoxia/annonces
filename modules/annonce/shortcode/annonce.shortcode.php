@@ -51,6 +51,11 @@ class Annonce_Shortcode {
 						'title'   => __( 'Phone number', 'annonces' ),
 						'content' => get_field( 'telephone', $annonce->ID ),
 					),
+					array(
+						'icon'    => 'map-marker-alt',
+						'title'   => __( 'Address', 'annonces' ),
+						'content' => $annonce->address['address'],
+					),
 				);
 				$annonce->datas   = apply_filters( 'set_marker_data', $microdata, $annonce->ID );
 				$taxonomies       = wp_get_post_terms( $annonce->ID, 'announce_taxonomy', array() );
