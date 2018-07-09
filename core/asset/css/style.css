@@ -69,6 +69,18 @@
   -webkit-box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
           box-shadow: 0 0 40px rgba(0, 0, 0, 0.2); }
 
+@media (max-width: 770px) {
+  #annonces-map-wrapper .annonces-taxonomies {
+    left: 0;
+    top: 0;
+    right: 0;
+    width: 100%;
+    max-width: none;
+    max-height: 160px;
+    -webkit-transform: none;
+        -ms-transform: none;
+            transform: none; } }
+
 #annonces-map-wrapper .annonces-taxonomies .taxonomies-entete {
   padding: 1em;
   background: rgba(0, 0, 0, 0.1); }
