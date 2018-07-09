@@ -83,11 +83,11 @@ window.eoxiaJS.annonces.annonce.createMap = function( map ) {
 
 	jQuery( '.annonces-taxonomies .taxonomy-label' ).on( 'click', function() {
 		if ( jQuery( this ).hasClass( 'active' ) ) {
-			window.eoxiaJS.annonces.annonce.displayMapMarkers( $htmlMarker, $listMarker, null, jQuery( this ).attr( 'data-id' ) );
+			window.eoxiaJS.annonces.annonce.displayMapMarkers( $htmlMarker, $listMarker, null, jQuery( this ).attr( 'data-id' ).split( ',' ) );
 			jQuery( this ).removeClass( 'active' );
 			jQuery( this ).next('.taxonomies-child').find( '.taxonomy-label' ).removeClass( 'active' );
 		} else {
-			window.eoxiaJS.annonces.annonce.displayMapMarkers( $htmlMarker, $listMarker, $gMap, jQuery( this ).attr( 'data-id' ) );
+			window.eoxiaJS.annonces.annonce.displayMapMarkers( $htmlMarker, $listMarker, $gMap, jQuery( this ).attr( 'data-id' ).split( ',' ) );
 			jQuery( this ).addClass( 'active' );
 			jQuery( this ).next('.taxonomies-child').find( '.taxonomy-label' ).addClass( 'active' );
 		}
@@ -145,13 +145,17 @@ window.eoxiaJS.annonces.annonce.createInfoWindow = function( marker ) {
  * @param  {Array} map Map
  * @return {void}
  */
-window.eoxiaJS.annonces.annonce.displayMapMarkers = function( htmlMarker, listMarkers, map, taxId ) {
+window.eoxiaJS.annonces.annonce.displayMapMarkers = function( htmlMarker, listMarkers, map, listTaxId ) {
 	for (var i = 0; i < listMarkers.length; i++) {
 		var taxonomies = htmlMarker[i].attr( 'taxonomy' ).split( ',' );
+		/** Loop over all markers */
 		taxonomies.forEach(function(tax) {
-			if ( tax == taxId ) {
-				listMarkers[i].setMap(map);
-			}
+			/** Loop over all chosen taxonomies */
+			listTaxId.forEach(function(id) {
+				if ( tax == id ) {
+					listMarkers[i].setMap(map);
+				}
+			});
 		});
 	}
 }

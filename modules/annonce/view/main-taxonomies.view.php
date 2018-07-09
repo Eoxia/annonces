@@ -23,7 +23,7 @@ defined( 'ABSPATH' ) || exit; ?>
 		<?php foreach ( $taxonomies_datas->taxonomies_parent as $parent ) : ?>
 			<div class="annonces-taxonomy">
 				<img src="<?php echo esc_url( $parent->marker ); ?>" />
-				<span class="taxonomy-label active" data-id="<?php echo esc_attr( $parent->term_id ); ?>"><?php echo esc_html( $parent->name ); ?></span>
+				<span class="taxonomy-label active" data-id="<?php echo esc_attr( $parent->list_tax_id ); ?>"><?php echo esc_html( $parent->name ); ?></span>
 
 				<div class="taxonomies-child">
 					<?php foreach ( $parent->taxonomies_child as $child ) : ?>

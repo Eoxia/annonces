@@ -39,8 +39,10 @@ class Annonce_Shortcode {
 
 		if ( ! empty( $annonces_map_query->posts ) ) {
 			foreach ( $annonces_map_query->posts as &$annonce ) {
+				/** Address field */
 				$annonce->address = get_field( 'address', $annonce->ID );
-				$microdata        = array(
+				/** Datas to display in infowindow */
+				$microdata      = array(
 					array(
 						'icon'    => 'envelope',
 						'title'   => __( 'Email', 'annonces' ),
@@ -57,9 +59,10 @@ class Annonce_Shortcode {
 						'content' => $annonce->address['address'],
 					),
 				);
-				$annonce->datas   = apply_filters( 'set_marker_data', $microdata, $annonce->ID );
-				$taxonomies       = wp_get_post_terms( $annonce->ID, 'announce_taxonomy', array() );
+				$annonce->datas = apply_filters( 'set_marker_data', $microdata, $annonce->ID );
 
+				/** All taxonomies of the announce */
+				$taxonomies   = wp_get_post_terms( $annonce->ID, 'announce_taxonomy', array() );
 				$annonce->tax = '';
 				if ( ! empty( $taxonomies ) ) :
 					foreach ( $taxonomies as $element ) :
@@ -68,6 +71,7 @@ class Annonce_Shortcode {
 				endif;
 				$annonce->tax = substr( $annonce->tax, 0, -1 );
 
+				/** Pin color of the announce */
 				if ( 0 === $taxonomies[0]->parent ) :
 					$annonce->pin = get_field( 'icon', 'announce_taxonomy_' . $taxonomies[0]->term_id );
 				else :
@@ -76,6 +80,7 @@ class Annonce_Shortcode {
 			}
 		}
 
+		/** List of all taxonomies */
 		$taxonomies_datas                    = new \stdClass();
 		$taxonomies_datas->taxonomies_parent = get_terms( array(
 			'taxonomy'     => 'announce_taxonomy',
@@ -83,16 +88,29 @@ class Annonce_Shortcode {
 			'hierarchical' => true,
 			'hide_empty'   => false,
 		) );
+		/** Construct of the child tax array */
 		foreach ( $taxonomies_datas->taxonomies_parent as $parent ) {
-			$parent->taxonomies_child = get_terms( array(
+			$parent->taxonomies_child      = get_terms( array(
 				'taxonomy'     => 'announce_taxonomy',
 				'parent'       => $parent->term_id,
 				'hierarchical' => true,
 				'hide_empty'   => false,
 			) );
-			$parent->marker           = PLUGIN_ANNONCES_URL . 'modules/annonce/asset/img/pin-' . get_field( 'icon', $parent ) . '.png';
+
+			/** List of all tax ID */
+			$parent->list_tax_id = $parent->term_id . ',';
+			if ( ! empty( $parent->taxonomies_child ) ) {
+				foreach ( $parent->taxonomies_child as $child ) {
+					$parent->list_tax_id .= $child->term_id . ',';
+				}
+			}
+			$parent->list_tax_id = substr( $parent->list_tax_id, 0, -1 );
+
+			/** Pin color of the child */
+			$parent->marker = PLUGIN_ANNONCES_URL . 'modules/annonce/asset/img/pin-' . get_field( 'icon', $parent ) . '.png';
 		}
 
+		/** Title of filter bloc */
 		$filter_title                       = __( 'Announces', 'annonces' );
 		$taxonomies_datas->taxonomies_title = apply_filters( 'bloc_filter_title', $filter_title );
 
