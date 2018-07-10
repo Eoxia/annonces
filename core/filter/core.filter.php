@@ -37,7 +37,8 @@ class Core_Filter {
 	 * @return string $api Google key.
 	 */
 	public function acf_filter_googlemap_api( $api ) {
-		$api_key = get_option( 'annonces_google_key' );
+		$api_key    = get_option( 'annonces_google_key' );
+		$api['key'] = ( ! empty( $api_key ) ) ? $api_key : '';
 		return $api;
 	}
 
