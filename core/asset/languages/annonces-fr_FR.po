@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Annonces v2.x.x\n"
-"POT-Creation-Date: 2018-07-02 17:49+0200\n"
-"PO-Revision-Date: 2018-07-02 17:49+0200\n"
+"POT-Creation-Date: 2018-07-11 09:35+0200\n"
+"PO-Revision-Date: 2018-07-11 09:37+0200\n"
 "Last-Translator: \n"
 "Language-Team: Eoxia dev@eoxia.com\n"
 "Language: fr\n"
@@ -127,36 +127,61 @@ msgstr "L'extension a été activée"
 msgid "All plugins installed and activated successfully. %s"
 msgstr "Tous les plugins ont été installés et activés : %s."
 
-#: modules/annonce/action/annonce.action.php:43
-#: modules/annonce/shortcode/annonce.shortcode.php:91
+#: modules/annonce/action/annonce.action.php:42
+#: modules/annonce/shortcode/annonce.shortcode.php:114
 #: modules/option/action/option.action.php:41
-#: modules/option/action/option.action.php:77
+#: modules/option/action/option.action.php:82
 msgid "Announces"
 msgstr "Annonces"
 
-#: modules/annonce/action/annonce.action.php:46
+#: modules/annonce/action/annonce.action.php:45
 msgid "Announce"
 msgstr "Annonce"
 
-#: modules/annonce/action/annonce.action.php:82
+#: modules/annonce/action/annonce.action.php:81
 msgid "Announce taxonomy"
 msgstr "Catégories annonces"
 
-#: modules/annonce/shortcode/annonce.shortcode.php:46
+#: modules/annonce/shortcode/annonce.shortcode.php:48
 #: modules/annonce/view/single-announce.php:37
 msgid "Email"
 msgstr "Email"
 
-#: modules/annonce/shortcode/annonce.shortcode.php:51
+#: modules/annonce/shortcode/annonce.shortcode.php:53
 #: modules/annonce/view/single-announce.php:43
 msgid "Phone number"
 msgstr "Numéro de téléphone"
+
+#: modules/annonce/shortcode/annonce.shortcode.php:58
+#: modules/annonce/view/single-announce.php:49
+msgid "Address"
+msgstr "Adresse"
 
 #: modules/annonce/view/main-markers.view.php:46
 msgid "See"
 msgstr "Voir"
 
-#: modules/option/action/option.action.php:84
+#: modules/annonce/view/single-announce.php:57
+msgid "Associated labels"
+msgstr "Appellation associées"
+
+#: modules/label/action/label.action.php:41
+msgid "Labels"
+msgstr "Appellations"
+
+#: modules/label/action/label.action.php:44
+msgid "Label"
+msgstr "Appellation"
+
+#: modules/label/view/single-label.php:37
+msgid "Website"
+msgstr "Site internet"
+
+#: modules/label/view/single-label.php:57
+msgid "Associated announces"
+msgstr "Annonces associées"
+
+#: modules/option/action/option.action.php:89
 msgid "Permalink Announce"
 msgstr "Permalien de Annonces"
 
@@ -173,6 +198,18 @@ msgid "Obtain a google map api key"
 msgstr "Obtenir une clé API Google Map"
 
 #: modules/option/view/main.view.php:32
+msgid "Display label module"
+msgstr "Afficher le module appellation"
+
+#: modules/option/view/main.view.php:36
+msgid "Activate"
+msgstr "Activer"
+
+#: modules/option/view/main.view.php:39
+msgid "Check to display the label module"
+msgstr "Cocher pour afficher le module Appellation"
+
+#: modules/option/view/main.view.php:44
 msgid "Update"
 msgstr "Mise à jour"
 
