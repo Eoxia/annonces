@@ -26,7 +26,6 @@ class Label_Filters {
 	 */
 	public function __construct() {
 		add_filter( 'acf/settings/load_json', array( $this, 'annonces_annonce_json_load' ) );
-		add_filter( 'acf/settings/save_json', array( $this, 'annonces_annonce_json_save' ) );
 		add_filter( 'single_template', array( $this, 'get_custom_post_type_template' ), 11 );
 	}
 
@@ -42,20 +41,6 @@ class Label_Filters {
 			$paths[] = PLUGIN_ANNONCES_PATH . 'modules/label/asset/json';
 		}
 		return $paths;
-	}
-
-	/**
-	 * Add a json save acf directory
-	 *
-	 * @since  2.0.0
-	 * @param  Array $paths Acf folders.
-	 * @return Array $paths Acf folders
-	 */
-	public function annonces_annonce_json_save( $path ) {
-		if ( \eoxia\Config_Util::$init['annonces']->label->state ) {
-			$path = PLUGIN_ANNONCES_PATH . 'modules/label/asset/json';
-		}
-		return $path;
 	}
 
 	/**
