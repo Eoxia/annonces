@@ -49,6 +49,33 @@ defined( 'ABSPATH' ) || exit; ?>
 						<li class="annonce-data"><i class="fas fa-map-marker-alt"></i> <strong><?php esc_html_e( 'Address', 'annonces' ); ?></strong> : <?php echo esc_html( $address['address'] ); ?></li> <?php
 						endif; ?>
 					</ul>
+
+					<?php
+					$labels = get_field( 'labels' );
+					if ( ! empty( $labels ) && \eoxia\Config_Util::$init['annonces']->label->state ) : ?>
+						<div class="annonce-label">
+							<h2 class="label-title"><?php esc_html_e( 'Associated labels', 'annonces' ); ?></h2>
+							<div class="label-list">
+								<?php
+								foreach ( $labels as $label ) :
+									$thumbnail = get_the_post_thumbnail( $label->ID ); ?>
+
+									<a href="<?php echo esc_url( $label->guid ); ?>">
+										<?php
+										if ( ! empty( $thumbnail ) ) :
+											echo $thumbnail; // WPCS: XSS ok.
+										else :
+											echo esc_html( $label->post_title );
+										endif;
+										?>
+									</a>
+									<?php
+								endforeach;
+								?>
+							</div>
+						</div> <?php
+					endif;
+					?>
 				</div>
 			</div>
 

@@ -26,7 +26,7 @@ class Option_Action {
 	 */
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'callback_admin_menu' ) );
-		add_action( 'wp_ajax_save_annonces_google_key', array( $this, 'callback_save_annonces_google_key' ) );
+		add_action( 'wp_ajax_save_annonces_options', array( $this, 'callback_save_annonces_options' ) );
 		add_action( 'admin_init', array( $this, 'add_permalink_setting' ) );
 		add_action( 'load-options-permalink.php', array( $this, 'update_permalink_setting_value' ) );
 	}
@@ -48,7 +48,8 @@ class Option_Action {
 	 * @version 2.0.0
 	 */
 	public function callback_add_menu_page() {
-		\eoxia\View_Util::exec( 'annonces', 'option', 'main' );
+		$display_label_value = get_option( 'annonces_display_label', false );
+		\eoxia\View_Util::exec( 'annonces', 'option', 'main', array( 'display_label_value' => $display_label_value ) );
 	}
 
 	/**
@@ -57,11 +58,15 @@ class Option_Action {
 	 * @since 2.0.0
 	 * @return void
 	 */
-	public function callback_save_annonces_google_key() {
-		check_ajax_referer( 'save_annonces_google_key' );
-		$google_key = ! empty( $_POST['annonces_google_key'] ) ? sanitize_text_field( $_POST['annonces_google_key'] ) : '';
+	public function callback_save_annonces_options() {
+		check_ajax_referer( 'save_annonces_options' );
+		$google_key    = ! empty( $_POST['annonces_google_key'] ) ? sanitize_text_field( $_POST['annonces_google_key'] ) : '';
+		$display_label = ( isset( $_POST['display_label'] ) && $_POST['display_label'] == 'true' ) ? true : false;
+
+		\eoxia\Module_Util::g()->set_state( 'annonces', 'label', $display_label );
 
 		update_option( 'annonces_google_key', $google_key );
+		update_option( 'annonces_display_label', $display_label );
 		wp_send_json_success();
 	}
 
