@@ -48,7 +48,7 @@ class Option_Action {
 	 * @version 2.0.0
 	 */
 	public function callback_add_menu_page() {
-		$display_label_value = get_option( 'annonces_display_label', false );
+		$display_label_value = get_option( 'annonces_display_label', true );
 		\eoxia\View_Util::exec( 'annonces', 'option', 'main', array( 'display_label_value' => $display_label_value ) );
 	}
 

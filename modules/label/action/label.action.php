@@ -24,7 +24,7 @@ class Label_Action {
 	 * @since 2.0.0
 	 */
 	public function __construct() {
-		add_action( 'init', array( $this, 'annonces_generate_post_type' ), 11 );
+		add_action( 'init', array( $this, 'annonces_generate_post_type' ) );
 	}
 
 	/**
@@ -47,8 +47,8 @@ class Label_Action {
 			'hierarchical'        => false,
 			'public'              => true,
 			'show_ui'             => true,
-			'show_in_menu'        => true,
-			'menu_position'       => 5,
+			'show_in_menu'        => 'annonces-menu',
+			'menu_position'       => 25,
 			'menu_icon'           => 'dashicons-tag',
 			'show_in_admin_bar'   => true,
 			'show_in_nav_menus'   => true,
