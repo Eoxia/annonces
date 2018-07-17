@@ -65,7 +65,7 @@ class Annonce_Actions {
 		$args   = array(
 			'label'               => __( 'Announce', 'annonces' ),
 			'labels'              => $labels,
-			'supports'            => array( 'title', 'editor', 'thumbnail', 'revisions' ),
+			'supports'            => array( 'title', 'editor', 'thumbnail', 'revisions', 'author' ),
 			'taxonomies'          => array( 'announce_taxonomy' ),
 			'hierarchical'        => false,
 			'public'              => true,
