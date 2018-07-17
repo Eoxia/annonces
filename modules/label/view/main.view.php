@@ -12,5 +12,3 @@
 namespace annonces;
 
 defined( 'ABSPATH' ) || exit; ?>
-
-Coucou

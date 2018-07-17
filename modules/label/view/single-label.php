@@ -53,7 +53,7 @@ defined( 'ABSPATH' ) || exit; ?>
 					));
 
 					if ( $labels ) : ?>
-						<div class="label-associated">
+						<div class="associated-announces">
 							<h2 class="associated-title"><?php esc_html_e( 'Associated announces', 'annonces' ); ?></h2>
 							<div class="associated-container wpeo-gridlayout grid-2">
 								<?php foreach ( $labels as $label ) :

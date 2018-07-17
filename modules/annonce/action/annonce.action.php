@@ -39,8 +39,8 @@ class Annonce_Actions {
 	 */
 	public function annonces_admin_menu() {
 		add_menu_page(
-			__( 'Annonces', 'annonces' ),
-			__( 'Annonces', 'annonces' ),
+			__( 'Announces', 'annonces' ),
+			__( 'Announces', 'annonces' ),
 			'read',
 			'annonces-menu',
 			'',

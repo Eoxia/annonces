@@ -51,6 +51,20 @@ defined( 'ABSPATH' ) || exit; ?>
 					</ul>
 
 					<?php
+					$author_id        = get_the_author_meta( 'ID' );
+					$author_name      = get_the_author_meta( 'display_name' );
+					$author_permalink = get_author_posts_url( $author_id );
+					$author_gravatar  = get_avatar( $author_id );
+					?>
+					<div class="annonce-author">
+						<h2 class="author-title"><?php esc_html_e( 'Author', 'annonce' ); ?></h2>
+						<a href="<?php echo esc_url( $author_permalink ); ?>">
+							<?php echo $author_gravatar; ?>
+							<?php echo esc_html( $author_name ); ?>
+						</a>
+					</div>
+
+					<?php
 					$labels = get_field( 'labels' );
 					if ( ! empty( $labels ) && \eoxia\Config_Util::$init['annonces']->label->state ) : ?>
 						<div class="annonce-label">

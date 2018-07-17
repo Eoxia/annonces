@@ -163,20 +163,20 @@
 #annonces-google-map {
   margin: 2em 0; }
 
-#annonces-google-map {
-  width: 100%;
-  height: 500px;
-  background: rgba(0, 0, 0, 0.1); }
-
-.label-associated .associated-content .associated-element-content {
+.associated-announces .associated-content .associated-element-content {
   -webkit-align-self: center;
       -ms-flex-item-align: center;
               -ms-grid-row-align: center;
           align-self: center; }
 
-.label-associated .associated-content .element-title, .label-associated .associated-content .element-tax {
+.associated-announces .associated-content .element-title, .associated-announces .associated-content .element-tax {
   line-height: 1; }
 
-.label-associated .associated-content figure img {
+.associated-announces .associated-content figure img {
   max-height: 100px;
   width: auto; }
+
+#annonces-google-map {
+  width: 100%;
+  height: 500px;
+  background: rgba(0, 0, 0, 0.1); }
