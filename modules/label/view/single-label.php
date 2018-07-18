@@ -30,14 +30,28 @@ defined( 'ABSPATH' ) || exit; ?>
 					<h1 class="page-title"><?php the_title(); ?></h1>
 					<?php the_content(); ?>
 
-					<ul class="label-microdatas">
+					<ul class="label-metadatas">
 						<?php
-						$website = get_field( 'website' );
-						if ( ! empty( $website ) ) : ?>
+						$metadatas = get_field( 'organisation' );
+
+						if ( ! empty( $metadatas['website'] ) ) : ?>
 							<li class="annonce-data"><i class="fas fa-globe"></i> <strong><?php esc_html_e( 'Website', 'annonces' ); ?></strong> :
-								<a href="<?php echo esc_url( $website ); ?>" target="_blank"><?php echo esc_html( $website ); ?></a>
+								<a href="<?php echo esc_url( $metadatas['website'] ); ?>" target="_blank"><?php echo esc_html( $metadatas['website'] ); ?></a>
 							</li> <?php
+						endif;
+
+						if ( ! empty( $metadatas['email'] ) ) : ?>
+							<li class="annonce-data"><i class="fas fa-envelope"></i> <strong><?php esc_html_e( 'Email', 'annonces' ); ?></strong> : <?php echo esc_html( $metadatas['email'] ); ?></li> <?php
+						endif;
+
+						if ( ! empty( $metadatas['telephone'] ) ) : ?>
+							<li class="annonce-data"><i class="fas fa-mobile-alt"></i> <strong><?php esc_html_e( 'Phone number', 'annonces' ); ?></strong> : <?php echo esc_html( $metadatas['telephone'] ); ?></li> <?php
+						endif;
+
+						if ( ! empty( $metadatas['address'] ) ) : ?>
+						<li class="annonce-data"><i class="fas fa-map-marker-alt"></i> <strong><?php esc_html_e( 'Address', 'annonces' ); ?></strong> : <?php echo esc_html( $metadatas['address']['address'] ); ?></li> <?php
 						endif; ?>
+
 					</ul>
 
 					<?php
