@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Annonces v2.x.x\n"
 "POT-Creation-Date: 2018-07-17 17:34+0200\n"
-"PO-Revision-Date: 2018-07-17 17:35+0200\n"
+"PO-Revision-Date: 2018-07-18 14:52+0200\n"
 "Last-Translator: \n"
 "Language-Team: Eoxia dev@eoxia.com\n"
 "Language: fr\n"
@@ -174,7 +174,7 @@ msgstr "Auteur"
 
 #: modules/annonce/view/single-announce.php:71
 msgid "Associated labels"
-msgstr "Appellation associées"
+msgstr "Certifications associées"
 
 #: modules/contact/view/main.view.php:19 modules/label/view/single-label.php:57
 msgid "Associated announces"
@@ -182,11 +182,11 @@ msgstr "Annonces associées"
 
 #: modules/label/action/label.action.php:41
 msgid "Labels"
-msgstr "Appellations"
+msgstr "Certifications"
 
 #: modules/label/action/label.action.php:44
 msgid "Label"
-msgstr "Appellation"
+msgstr "Certification"
 
 #: modules/label/view/single-label.php:37
 msgid "Website"
