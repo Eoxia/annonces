@@ -9,19 +9,18 @@ Annonces is a WordPress plugin. It display announces posted in your WordPress in
 - GoogleMaps : https://developers.google.com/maps/documentation/javascript/get-api-key
 
 ### Installing
-- In your backadmin, go to "Plugins" pannel
+- In your backadmin, go to "Plugins" panel
 - Install the plugin Annonces
 - Install required plugin : ACF Free and update it to version 5.x.x
 - Activate plugins Annonces and ACF
 
 ## How to use
-1) Download the plugin
-2) Active the plugin
-3) Follow the informations
-4) Create your first annonce
-5) Choose the category, pin-color
-6) View you annonce
-7) View all the annonces put the shortcode in a page
+- Active the plugin
+- Follow the informations
+- Create your first annonce
+- Choose the category, pin-color
+- View you annonce
+- View all the annonces put the shortcode in a page
 
 ### Shortcodes
 [annonces] : Display the Google Map in a page with the shortcode :
