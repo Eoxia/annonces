@@ -23,7 +23,9 @@ DEFINE( 'PLUGIN_ANNONCES_DIR', basename( __DIR__ ) );
 /**
  * Enable ACF 5 early access
  */
-DEFINE( 'ACF_EARLY_ACCESS', '5' );
+if ( ! defined( 'ACF_EARLY_ACCESS' ) ) {
+	DEFINE( 'ACF_EARLY_ACCESS', '5' );
+}
 
 // Include EO_Framework.
 require_once 'core/external/eo-framework/eo-framework.php';
