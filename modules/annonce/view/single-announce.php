@@ -74,7 +74,7 @@ defined( 'ABSPATH' ) || exit; ?>
 								foreach ( $labels as $label ) :
 									$thumbnail = get_the_post_thumbnail( $label->ID ); ?>
 
-									<a href="<?php echo esc_url( $label->guid ); ?>">
+									<a href="<?php echo esc_url( get_permalink( $label->ID ) ); ?>">
 										<?php
 										if ( ! empty( $thumbnail ) ) :
 											echo $thumbnail; // WPCS: XSS ok.

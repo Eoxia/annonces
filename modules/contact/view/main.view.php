@@ -32,10 +32,10 @@ defined( 'ABSPATH' ) || exit; ?>
 				?>
 				<div class="associated-content wpeo-gridlayout grid-3 grid-gap-0">
 					<?php if ( ! empty( $announce_image ) ) : ?>
-						<figure><a href="<?php echo esc_url( $announce->guid ); ?>"><?php echo $announce_image; ?></a></figure>
+						<figure><a href="<?php echo esc_url( get_permalink( $announce->ID ) ); ?>"><?php echo $announce_image; ?></a></figure>
 					<?php endif; ?>
 					<div class="associated-element-content gridw-2">
-						<h3 class="element-title"><a href="<?php echo esc_url( $announce->guid ); ?>"><?php echo esc_html( $announce->post_title ); ?></a></h3>
+						<h3 class="element-title"><a href="<?php echo esc_url( get_permalink( $announce->ID ) ); ?>"><?php echo esc_html( $announce->post_title ); ?></a></h3>
 						<div class="element-tax"><?php echo esc_html( $tax ); ?></div>
 					</div>
 				</div>

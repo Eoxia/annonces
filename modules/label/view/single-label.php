@@ -84,10 +84,10 @@ defined( 'ABSPATH' ) || exit; ?>
 									?>
 									<div class="associated-content wpeo-gridlayout grid-3 grid-gap-0">
 										<?php if ( ! empty( $label_image ) ) : ?>
-											<figure><a href="<?php echo esc_url( $label->guid ); ?>"><?php echo $label_image; ?></a></figure>
+											<figure><a href="<?php echo esc_url( get_permalink( $label->ID ) ); ?>"><?php echo $label_image; ?></a></figure>
 										<?php endif; ?>
 										<div class="associated-element-content gridw-2">
-											<h3 class="element-title"><a href="<?php echo esc_url( $label->guid ); ?>"><?php echo esc_html( $label->post_title ); ?></a></h3>
+											<h3 class="element-title"><a href="<?php echo esc_url( get_permalink( $label->ID ) ); ?>"><?php echo esc_html( $label->post_title ); ?></a></h3>
 											<div class="element-tax"><?php echo esc_html( $tax ); ?></div>
 										</div>
 									</div>

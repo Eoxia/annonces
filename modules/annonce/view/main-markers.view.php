@@ -43,7 +43,7 @@ if ( ! empty( $annonces_map_query->posts ) ) :
 							<?php endif; ?>
 						<?php endforeach; ?>
 					</ul>
-					<a href="<?php echo esc_url( $annonce->guid ); ?>" class="wpeo-button button-main button-size-small"><?php esc_html_e( 'See', 'annonces' ); ?></a>
+					<a href="<?php echo esc_url( get_permalink( $annonce->ID ) ); ?>" class="wpeo-button button-main button-size-small"><?php esc_html_e( 'See', 'annonces' ); ?></a>
 				</div>
 			</div>
 		</marker> <?php
