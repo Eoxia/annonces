@@ -16,14 +16,14 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Action of "Hello_World" module.
  */
-class Annonce_Actions {
+class Annonce_Actions extends \eoxia\Singleton_Util {
 
 	/**
 	 * Constructor
 	 *
 	 * @since 2.0.0
 	 */
-	public function __construct() {
+	protected function construct() {
 		add_action( 'admin_menu', array( $this, 'annonces_admin_menu' ) );
 		add_action( 'admin_menu', array( $this, 'submenupage_annonces' ) );
 		add_action( 'init', array( $this, 'annonces_generate_post_type' ) );
@@ -85,7 +85,8 @@ class Annonce_Actions {
 			),
 		);
 		register_post_type( 'announce', $args );
-
+		/** Regenerate permalinks */
+		flush_rewrite_rules();
 	}
 
 

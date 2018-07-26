@@ -30,6 +30,20 @@ if ( ! defined( 'ACF_EARLY_ACCESS' ) ) {
 // Include EO_Framework.
 require_once 'core/external/eo-framework/eo-framework.php';
 
+/**
+ * Regenerate permalinks
+ *
+ * @since 2.1.0
+ * @return void
+ */
+function my_rewrite_flush() {
+	Annonce_Actions::g()->annonces_generate_post_type;
+	Label_Actions::g()->label_generate_post_type;
+
+	flush_rewrite_rules();
+}
+register_activation_hook( __FILE__, '\annonces\my_rewrite_flush' );
+
 
 // Boot your plugin.
 \eoxia\Init_Util::g()->exec( PLUGIN_ANNONCES_PATH, basename( __FILE__, '.php' ) );

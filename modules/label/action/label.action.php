@@ -16,15 +16,15 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Action of "Hello_World" module.
  */
-class Label_Action {
+class Label_Action extends \eoxia\Singleton_Util {
 
 	/**
 	 * Constructor
 	 *
 	 * @since 2.0.0
 	 */
-	public function __construct() {
-		add_action( 'init', array( $this, 'annonces_generate_post_type' ) );
+	protected function construct() {
+		add_action( 'init', array( $this, 'label_generate_post_type' ) );
 	}
 
 	/**
@@ -33,7 +33,7 @@ class Label_Action {
 	 * @since 2.0.0
 	 * @return void
 	 */
-	public function annonces_generate_post_type() {
+	public function label_generate_post_type() {
 
 		$labels = array(
 			'name'          => _x( 'Labels', 'Post Type General Name', 'annonces' ),
