@@ -3,7 +3,7 @@ Contributors: Eoxia
 Requires at least: 4.9.0
 Tested up to: 4.9.6
 Requires PHP: 5.6
-Stable tag: 2.0.0
+Stable tag: 2.1.0
 License: AGPLv3
 License URI: https://spdx.org/licenses/AGPL-3.0-or-later.html
 
@@ -71,11 +71,15 @@ You can create single-announces.php in your child theme to edit the single page 
 * 20488 - Review the name of the filters on the documentation
 * 20489 - Add the Address field in the metadata (map & single)
 * 20492 - add the ACF filter to set the Google map API Key
+* XXXXX - Minor fix
 
 = Improvment =
 
 * 20498 - Improvement of the markers toggle script on the google map
 * 20491 - Improved mobile display for the filter block
+* 20564 - All modules in one menu page
+* 20520 - Module Label
+* 20563 - Module Author
 
 = 2.0.0 =
 
