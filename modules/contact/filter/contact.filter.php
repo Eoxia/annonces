@@ -26,7 +26,8 @@ class Contact_Filters {
 	 */
 	public function __construct() {
 		add_filter( 'acf/settings/load_json', array( $this, 'annonces_annonce_json_load' ) );
-		add_filter( 'the_content', array( $this, 'contact_view' ) );
+		// add_filter( 'the_content', array( $this, 'contact_view' ) );
+		add_filter( 'pre_get_posts', array( $this, 'display_associated_announces' ) );
 	}
 
 	/**
@@ -68,6 +69,19 @@ class Contact_Filters {
 		endif;
 
 		return $content;
+	}
+
+	/**
+	 * Display associated announces
+	 *
+	 * @since  2.1.0
+	 * @param  array $query Query datas.
+	 * @return void
+	 */
+	public function display_associated_announces( $query ) {
+		if ( $query->is_author && $query->is_main_query() ) {
+			$query->set( 'post_type', array( 'post', 'announce' ) );
+		}
 	}
 
 }
