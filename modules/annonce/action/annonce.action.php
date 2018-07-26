@@ -16,7 +16,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Action of "Hello_World" module.
  */
-class Annonce_Actions extends \eoxia\Singleton_Util {
+class Annonce_Action extends \eoxia\Singleton_Util {
 
 	/**
 	 * Constructor
@@ -145,4 +145,4 @@ class Annonce_Actions extends \eoxia\Singleton_Util {
 	}
 }
 
-new Annonce_Actions();
+new Annonce_Action();
