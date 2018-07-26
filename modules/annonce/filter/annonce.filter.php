@@ -58,7 +58,7 @@ class Annonce_Filters {
 			if ( ! empty( $path_to_theme ) ) {
 				$single_template = $path_to_theme;
 			} else {
-				$single_template = PLUGIN_ANNONCES_PATH . '\modules\annonce\view\single-announce.php';
+				$single_template = str_replace( '\\', '/', PLUGIN_ANNONCES_PATH . '\modules\annonce\view\single-announce.php' );
 			}
 		}
 

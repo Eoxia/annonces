@@ -60,7 +60,7 @@ class Label_Filters {
 			if ( ! empty( $path_to_theme ) ) {
 				$single_template = $path_to_theme;
 			} else {
-				$single_template = PLUGIN_ANNONCES_PATH . '\modules\label\view\single-label.php';
+				$single_template = str_replace( '\\', '/', PLUGIN_ANNONCES_PATH . '\modules\label\view\single-label.php' );
 			}
 		}
 
