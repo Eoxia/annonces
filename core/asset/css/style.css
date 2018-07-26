@@ -69,6 +69,18 @@
   -webkit-box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
           box-shadow: 0 0 40px rgba(0, 0, 0, 0.2); }
 
+@media (max-width: 770px) {
+  #annonces-map-wrapper .annonces-taxonomies {
+    left: 0;
+    top: 0;
+    right: 0;
+    width: 100%;
+    max-width: none;
+    max-height: 160px;
+    -webkit-transform: none;
+        -ms-transform: none;
+            transform: none; } }
+
 #annonces-map-wrapper .annonces-taxonomies .taxonomies-entete {
   padding: 1em;
   background: rgba(0, 0, 0, 0.1); }
@@ -150,6 +162,19 @@
 
 #annonces-google-map {
   margin: 2em 0; }
+
+.associated-announces .associated-content .associated-element-content {
+  -webkit-align-self: center;
+      -ms-flex-item-align: center;
+              -ms-grid-row-align: center;
+          align-self: center; }
+
+.associated-announces .associated-content .element-title, .associated-announces .associated-content .element-tax {
+  line-height: 1; }
+
+.associated-announces .associated-content figure img {
+  max-height: 100px;
+  width: auto; }
 
 #annonces-google-map {
   width: 100%;

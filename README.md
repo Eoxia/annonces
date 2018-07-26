@@ -37,7 +37,7 @@ function mytheme_set_marker_data($microdata, $annonce_id) {
 #### Change title of filter bloc over the map
 ```
 add_filter('bloc_filter_title', 'mytheme_set_filter_title', 10, 1);
-function mytheme_set_marker_data($filter_title) {
+function mytheme_set_filter_title($filter_title) {
     // datas
     return $filter_title;
 }

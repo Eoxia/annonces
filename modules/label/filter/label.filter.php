@@ -16,7 +16,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Action of "Hello_World" module.
  */
-class Annonce_Filters {
+class Label_Filters {
 
 	/**
 	 * Constructor
@@ -37,7 +37,9 @@ class Annonce_Filters {
 	 * @return Array $paths Acf folders
 	 */
 	public function annonces_annonce_json_load( $paths ) {
-		$paths[] = PLUGIN_ANNONCES_PATH . 'modules/annonce/asset/json';
+		if ( \eoxia\Config_Util::$init['annonces']->label->state ) {
+			$paths[] = PLUGIN_ANNONCES_PATH . 'modules/label/asset/json';
+		}
 		return $paths;
 	}
 
@@ -51,14 +53,14 @@ class Annonce_Filters {
 	public function get_custom_post_type_template( $single_template ) {
 		global $post;
 
-		if ( 'announce' === $post->post_type ) {
+		if ( 'label' === $post->post_type ) {
 			/** Get theme template if exist */
-			$path_to_theme = locate_template( 'single-announce.php' );
+			$path_to_theme = locate_template( 'single-label.php' );
 
 			if ( ! empty( $path_to_theme ) ) {
 				$single_template = $path_to_theme;
 			} else {
-				$single_template = str_replace( '\\', '/', PLUGIN_ANNONCES_PATH . '\modules\annonce\view\single-announce.php' );
+				$single_template = str_replace( '\\', '/', PLUGIN_ANNONCES_PATH . '\modules\label\view\single-label.php' );
 			}
 		}
 
@@ -67,4 +69,4 @@ class Annonce_Filters {
 
 }
 
-new Annonce_Filters();
+new Label_Filters();

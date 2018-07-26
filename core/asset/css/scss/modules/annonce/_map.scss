@@ -18,6 +18,16 @@
 	max-width: 240px;
 	box-shadow: 0 0 40px rgba(0,0,0,0.2);
 
+	@media ( max-width: $media__medium ) {
+		left: 0;
+		top: 0;
+		right: 0;
+		width: 100%;
+		max-width: none;
+		max-height: 160px;
+		transform: none;
+	}
+
 	.taxonomies-entete {
 		padding: 1em;
 		background: rgba(0,0,0,0.1);

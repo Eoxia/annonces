@@ -4,7 +4,9 @@
 	"modules": [
 		"core/core.config.json",
 		"modules/option/option.config.json",
-		"modules/annonce/annonce.config.json"
+		"modules/annonce/annonce.config.json",
+		"modules/label/label.config.json",
+		"modules/contact/contact.config.json"
 	],
-	"version": "2.0.0"
+	"version": "2.1.0"
 }

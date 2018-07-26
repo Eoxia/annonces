@@ -61,7 +61,6 @@ class Core_Action {
 		wp_enqueue_script( 'annonces-frontend-script' );
 
 		/** Aller chercher la clé entrée dans les options de configuration */
-		// $api_key = 'AIzaSyAjNX-2ycIAskm4GmdWpmYhSG0XCHB2KgY';
 		$api_key = get_option( 'annonces_google_key' );
 		wp_enqueue_script( 'annonces-google-map-api', 'https://maps.googleapis.com/maps/api/js?key=' . $api_key, array(), '', true );
 	}
@@ -74,6 +73,7 @@ class Core_Action {
 	 */
 	public function acf_version_notice() {
 		if ( ! is_acf() ) return;
+		if ( ! file_exists( PLUGIN_ANNONCES_PATH . '/../advanced-custom-fields/acf.php' ) ) return;
 
 		$acf_datas = get_plugin_data( PLUGIN_ANNONCES_PATH . '/../advanced-custom-fields/acf.php' );
 		if ( (int) substr( $acf_datas['Version'], 0, 1 ) < 5 ) {
