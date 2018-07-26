@@ -107,7 +107,9 @@ class Annonce_Shortcode {
 			$parent->list_tax_id = substr( $parent->list_tax_id, 0, -1 );
 
 			/** Pin color of the child */
-			$parent->marker = PLUGIN_ANNONCES_URL . 'modules/annonce/asset/img/pin-' . get_field( 'icon', $parent ) . '.png';
+			$parent_marker_data = get_field( 'icon', $parent );
+			$parent_marker_data = ( ! empty( $parent_marker_data ) ) ? $parent_marker_data : 'red';
+			$parent->marker     = PLUGIN_ANNONCES_URL . 'modules/annonce/asset/img/pin-' . $parent_marker_data . '.png';
 		}
 
 		/** Title of filter bloc */
