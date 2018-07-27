@@ -3,7 +3,7 @@ Contributors: Eoxia
 Requires at least: 4.9.0
 Tested up to: 4.9.6
 Requires PHP: 5.6
-Stable tag: 2.1.0
+Stable tag: 2.1.1
 License: AGPLv3
 License URI: https://spdx.org/licenses/AGPL-3.0-or-later.html
 
@@ -62,6 +62,12 @@ You can create single-announces.php in your child theme to edit the single page 
 2. description of an announce
 
 == Changelog ==
+
+= 2.1.1 =
+
+= Fix =
+
+* 20891 - Fix activation error
 
 = 2.1.0 =
 
