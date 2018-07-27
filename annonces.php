@@ -37,8 +37,8 @@ require_once 'core/external/eo-framework/eo-framework.php';
  * @return void
  */
 function my_rewrite_flush() {
-	Annonce_Action::g()->annonces_generate_post_type;
-	Label_Action::g()->label_generate_post_type;
+	Annonce_Action::g()->annonces_generate_post_type();
+	Label_Action::g()->label_generate_post_type();
 
 	flush_rewrite_rules();
 }
