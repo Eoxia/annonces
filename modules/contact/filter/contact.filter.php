@@ -26,7 +26,6 @@ class Contact_Filters {
 	 */
 	public function __construct() {
 		add_filter( 'acf/settings/load_json', array( $this, 'annonces_annonce_json_load' ) );
-		// add_filter( 'the_content', array( $this, 'contact_view' ) );
 		add_filter( 'pre_get_posts', array( $this, 'display_associated_announces' ) );
 	}
 
@@ -38,37 +37,8 @@ class Contact_Filters {
 	 * @return Array $paths Acf folders
 	 */
 	public function annonces_annonce_json_load( $paths ) {
-		if ( \eoxia\Config_Util::$init['annonces']->label->state ) {
-			$paths[] = PLUGIN_ANNONCES_PATH . 'modules/label/asset/json';
-		}
+		$paths[] = ANNONCES_PATH . 'modules/label/asset/json';
 		return $paths;
-	}
-
-	/**
-	 * View of single post author
-	 *
-	 * @param  string $content Content of page.
-	 * @return string $content Content of page.
-	 */
-	public function contact_view( $content ) {
-		if ( is_author() ) :
-			/* Get associated announces */
-			$announces_query = new \WP_Query( array(
-				'post_type' => 'announce',
-				'author'    => get_the_ID(),
-			) );
-
-			/* Get render */
-			ob_start();
-				\eoxia\View_Util::exec( 'annonces', 'contact', 'main', array(
-					'content'   => $content,
-					'announces' => $announces_query->posts,
-				) );
-
-			$content .= ob_get_clean();
-		endif;
-
-		return $content;
 	}
 
 	/**

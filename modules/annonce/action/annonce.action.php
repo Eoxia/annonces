@@ -6,7 +6,7 @@
  * @copyright (c) 2006-2018 Eoxia <dev@eoxia.com>
  * @license   AGPLv3 <https://spdx.org/licenses/AGPL-3.0-or-later.html>
  * @package   Annonces\annonce\Actions
- * @since     2.0.0
+ * @since     2.2.0
  */
 
 namespace annonces;
@@ -16,20 +16,44 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Action of "Hello_World" module.
  */
-class Annonce_Action extends \eoxia\Singleton_Util {
+class Annonce_Action {
+	/**
+	 * Instance
+	 *
+	 * @var Singleton
+	 * @access private
+	 * @static
+	 */
+	private static $instance = null;
 
+	/**
+	 * Méthode qui crée l'unique instance de la classe
+	 * si elle n'existe pas encore puis la retourne.
+	 *
+	 * @param void
+	 * @return Singleton
+	 */
+	public static function get_instance() {
+
+		if ( is_null( self::$instance ) ) {
+			self::$instance = new Annonce_Action();
+		}
+
+		return self::$instance;
+	}
 	/**
 	 * Constructor
 	 *
 	 * @since 2.0.0
 	 */
-	protected function construct() {
+	private function __construct() {
 		add_action( 'admin_menu', array( $this, 'annonces_admin_menu' ) );
 		add_action( 'admin_menu', array( $this, 'submenupage_annonces' ) );
 		add_action( 'init', array( $this, 'annonces_generate_post_type' ) );
 		add_action( 'init', array( $this, 'announce_taxonomy' ) );
 		add_action( 'parent_file', array( $this, 'prefix_highlight_taxonomy_parent_menu' ) );
 	}
+
 
 	/**
 	 * Adding a menu to contain the custom post types for Announce
@@ -144,5 +168,4 @@ class Annonce_Action extends \eoxia\Singleton_Util {
 		return $parent_file;
 	}
 }
-
-new Annonce_Action();
+Annonce_Action::get_instance();

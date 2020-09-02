@@ -22,7 +22,7 @@ defined( 'ABSPATH' ) || exit; ?>
 		while ( have_posts() ) : the_post();
 
 			?>
-			<div class="wpeo-gridlayout grid-2">
+			<div class="gridlayout grid-2">
 				<figure class="annonce-thumbnail">
 					<?php the_post_thumbnail(); ?>
 				</figure>
@@ -66,7 +66,7 @@ defined( 'ABSPATH' ) || exit; ?>
 
 					<?php
 					$labels = get_field( 'labels' );
-					if ( ! empty( $labels ) && \eoxia\Config_Util::$init['annonces']->label->state ) : ?>
+					if ( ! empty( $labels ) ) : ?>
 						<div class="annonce-label">
 							<h2 class="label-title"><?php esc_html_e( 'Associated labels', 'annonces' ); ?></h2>
 							<div class="label-list">

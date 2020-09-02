@@ -5,8 +5,8 @@
  * @author    Eoxia <dev@eoxia.com>
  * @copyright (c) 2006-2018 Eoxia <dev@eoxia.com>
  * @license   AGPLv3 <https://spdx.org/licenses/AGPL-3.0-or-later.html>
- * @package   Annonces\Actions
- * @since     2.0.0
+ * @package   Annonces\Core\Util
+ * @since     2.2.0
  */
 
 namespace annonces;
@@ -16,15 +16,71 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Appelle la vue permettant d'afficher la navigation
  */
-class Annonces_Util extends \eoxia\Singleton_Util {
+class Annonces_Util {
+	/**
+	 * Instance
+	 *
+	 * @var Singleton
+	 * @access private
+	 * @static
+	 */
+	private static $instance = null;
+
+	/**
+	 * Méthode qui crée l'unique instance de la classe
+	 * si elle n'existe pas encore puis la retourne.
+	 *
+	 * @param void
+	 * @return Singleton
+	 */
+	public static function get_instance() {
+
+		if ( is_null( self::$instance ) ) {
+			self::$instance = new Annonces_Util();
+		}
+
+		return self::$instance;
+	}
 
 	/**
 	 * Le constructeur
 	 *
-	 * @since 2.0.0-alpha
-	 * @version 2.0.0-alpha
+	 * @since 0.1.0-alpha
+	 * @version 0.1.0-alpha
 	 */
-	protected function construct() {}
+	private function __construct() {}
+
+	/**
+	 * Donne le chemin de la vue à inclure dans le module
+	 *
+	 * @since 1.0.0
+	 * @version 1.0.0
+	 * @param string $module_name Nom du module à rechercher.
+	 * @param string $template_name Nom du template à rechercher.
+	 * @return string
+	 */
+	public function get_module_view_path( $module_name, $template_name = 'default' ) {
+		if ( empty( $module_name ) ) {
+			return false;
+		}
+		if ( empty( $template_name ) ) {
+			$template_name = 'default';
+		}
+		$path_to_module         = ANNONCES_PATH . 'modules/' . $module_name . '/view/' . $template_name . '.php';
+		$path_to_module_default = ANNONCES_PATH . 'modules/' . $module_name . '/view/default.view.php';
+		$path_to_theme          = locate_template( 'annonces/' . $module_name . '/' . $template_name . '.php' );
+		$path_to_theme_default  = locate_template( 'annonces/' . $module_name . '/default.view.php' );
+
+		if ( ! empty( $path_to_theme ) ) : // Si le template existe dans le thème.
+			return $path_to_theme;
+		elseif ( empty( $path_to_theme ) && is_file( $path_to_module ) ) : // Si le template existe dans le module.
+			return $path_to_module;
+		elseif ( ! empty( $path_to_theme_default ) ) : // Si le fichier default existe dans le thème.
+			return $path_to_theme_default;
+		else : // Sinon, on prend le fichier default du module.
+			return $path_to_module_default;
+		endif;
+	}
 
 	/**
 	 * Donne le chemin de la vue à inclure dans le module
@@ -89,5 +145,4 @@ class Annonces_Util extends \eoxia\Singleton_Util {
 		tgmpa( $plugins, $config );
 	}
 }
-
-Annonces_Util::g();
+Annonces_Util::get_instance();
