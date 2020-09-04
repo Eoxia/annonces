@@ -109,7 +109,7 @@ class Annonce_Shortcode {
 			/** Pin color of the child */
 			$parent_marker_data = get_field( 'icon', $parent );
 			$parent_marker_data = ( ! empty( $parent_marker_data ) ) ? $parent_marker_data : 'red';
-			$parent->marker     = PLUGIN_ANNONCES_URL . 'modules/annonce/asset/img/pin-' . $parent_marker_data . '.png';
+			$parent->marker     = ANNONCES_URL . 'modules/annonce/asset/img/pin-' . $parent_marker_data . '.png';
 		}
 
 		/** Title of filter bloc */
@@ -117,10 +117,8 @@ class Annonce_Shortcode {
 		$taxonomies_datas->taxonomies_title = apply_filters( 'bloc_filter_title', $filter_title );
 
 		ob_start();
-			\eoxia\View_Util::exec( 'annonces', 'annonce', 'main', array(
-				'annonces_map_query' => $annonces_map_query,
-				'taxonomies_datas'   => $taxonomies_datas,
-			) );
+			$view_path = \annonces\Annonces_Util::get_instance()->get_module_view_path( 'annonce', 'main.view' );
+			include $view_path;
 
 		return ob_get_clean();
 	}
