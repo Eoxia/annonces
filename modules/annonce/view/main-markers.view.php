@@ -20,7 +20,7 @@ if ( ! empty( $annonces_map_query->posts ) ) :
 		lng="<?php echo esc_html( $marker_annonce->address['lng'] ); ?>"
 		taxonomy="<?php echo esc_attr( $marker_annonce->tax ); ?>"
 		pin="<?php echo ( ! empty( $marker_annonce->pin ) ) ? esc_html( $marker_annonce->pin ) : 'red'; ?>">
-			<div class="marker-container wpeo-gridlayout grid-2">
+			<div class="marker-container gridlayout grid-2">
 				<figure class="thumbnail">
 					<?php
 					$thumb_id  = get_post_thumbnail_id( $marker_annonce->ID );

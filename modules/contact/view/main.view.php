@@ -17,7 +17,7 @@ defined( 'ABSPATH' ) || exit; ?>
 
 	<div class="associated-announces">
 		<h2 class="associated-title"><?php esc_html_e( 'Associated announces', 'annonces' ); ?></h2>
-		<div class="associated-container wpeo-gridlayout grid-2">
+		<div class="associated-container gridlayout grid-2">
 			<?php foreach ( $announces as $announce ) :
 				$announce_image = get_the_post_thumbnail( $announce->ID );
 
@@ -30,7 +30,7 @@ defined( 'ABSPATH' ) || exit; ?>
 				endif;
 				$tax = substr( $tax, 0, -1 );
 				?>
-				<div class="associated-content wpeo-gridlayout grid-3 grid-gap-0">
+				<div class="associated-content gridlayout grid-3 grid-gap-0">
 					<?php if ( ! empty( $announce_image ) ) : ?>
 						<figure><a href="<?php echo esc_url( get_permalink( $announce->ID ) ); ?>"><?php echo $announce_image; ?></a></figure>
 					<?php endif; ?>
