@@ -14,9 +14,6 @@ namespace annonces;
 defined( 'ABSPATH' ) || exit;
 
 if ( ! empty( $annonces_map_query->posts ) ) :
-	echo '<pre>';
-	print_r($annonces_map_query->posts);
-	echo '</pre>';
 	foreach ( $annonces_map_query->posts as $marker_annonce ) : ?>
 		<marker id="<?php echo esc_html( $marker_annonce->ID ); ?>"
 		lat="<?php echo esc_html( $marker_annonce->address['lat'] ); ?>"
