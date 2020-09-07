@@ -78,8 +78,16 @@ class Option_Action {
 			'permalink',
 			'permalink_session_annonce'
 		);
+		add_settings_field(
+			'permalink_annonce_tax',
+			__('Permalink Announce taxonomy', 'annonces'),
+			array($this, 'eg_setting_tax_callback_function'),
+			'permalink',
+			'permalink_session_annonce'
+		);
 
 		register_setting('permalink', 'permalink_annonce');
+		register_setting('permalink', 'permalink_annonce_tax');
 	}
 
 	/**
@@ -94,6 +102,17 @@ class Option_Action {
 	}
 
 	/**
+	 * Display permalink field view
+	 *
+	 * @return void
+	 * @since 2.0.0
+	 */
+	public function eg_setting_tax_callback_function() {
+		$main_view = \annonces\Annonces_Util::get_instance()->get_module_view_path('option', 'permalink-field-tax.view');
+		include $main_view;
+	}
+
+	/**
 	 * Update manually permalink data
 	 *
 	 * @return void
@@ -103,6 +122,11 @@ class Option_Action {
 		if (isset($_POST['permalink_annonce'])) {
 			$permalink_annonce = !empty($_POST['permalink_annonce']) ? sanitize_title($_POST['permalink_annonce']) : '';
 			update_option('permalink_annonce', $permalink_annonce);
+		}
+
+		if (isset($_POST['permalink_annonce'])) {
+			$permalink_annonce_tax = !empty($_POST['permalink_annonce_tax']) ? sanitize_title($_POST['permalink_annonce_tax']) : '';
+			update_option('permalink_annonce_tax', $permalink_annonce_tax);
 		}
 	}
 

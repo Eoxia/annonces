@@ -151,6 +151,9 @@ class Annonce_Action {
 			'show_admin_column' => true,
 			'show_in_nav_menus' => true,
 			'show_tagcloud'     => true,
+			'rewrite'             => array(
+				'slug' => get_option( 'permalink_annonce_tax', 'announce_taxonomy' ),
+			),
 		);
 		register_taxonomy( 'announce_taxonomy', array( 'announce' ), $args );
 	}
