@@ -16,14 +16,14 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Action of "Hello_World" module.
  */
-class Label_Action extends \eoxia\Singleton_Util {
+class Label_Action {
 
 	/**
 	 * Constructor
 	 *
 	 * @since 2.0.0
 	 */
-	protected function construct() {
+	public function __construct() {
 		add_action( 'init', array( $this, 'label_generate_post_type' ) );
 	}
 
@@ -63,5 +63,4 @@ class Label_Action extends \eoxia\Singleton_Util {
 	}
 
 }
-
 new Label_Action();

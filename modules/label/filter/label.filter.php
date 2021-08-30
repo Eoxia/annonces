@@ -37,9 +37,7 @@ class Label_Filters {
 	 * @return Array $paths Acf folders
 	 */
 	public function annonces_annonce_json_load( $paths ) {
-		if ( \eoxia\Config_Util::$init['annonces']->label->state ) {
-			$paths[] = PLUGIN_ANNONCES_PATH . 'modules/label/asset/json';
-		}
+		$paths[] = ANNONCES_PATH . 'modules/label/asset/json';
 		return $paths;
 	}
 
@@ -53,17 +51,7 @@ class Label_Filters {
 	public function get_custom_post_type_template( $single_template ) {
 		global $post;
 
-		if ( 'label' === $post->post_type ) {
-			/** Get theme template if exist */
-			$path_to_theme = locate_template( 'single-label.php' );
-
-			if ( ! empty( $path_to_theme ) ) {
-				$single_template = $path_to_theme;
-			} else {
-				$single_template = str_replace( '\\', '/', PLUGIN_ANNONCES_PATH . '\modules\label\view\single-label.php' );
-			}
-		}
-
+		$view_path = \annonces\Annonces_Util::get_instance()->get_module_view_path( 'label', 'single-label' );
 		return $single_template;
 	}
 

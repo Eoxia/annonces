@@ -16,8 +16,14 @@ defined( 'ABSPATH' ) || exit; ?>
 <div id="annonces-map-wrapper">
 	<div id="annonces-google-map">
 		<markers>
-			<?php \eoxia\View_Util::exec( 'annonces', 'annonce', 'main-markers', array( 'annonces_map_query' => $annonces_map_query ) ); ?>
+			<?php
+			$marker_template = \annonces\Annonces_Util::get_instance()->get_module_view_path( 'annonce', 'main-markers.view' );
+			include $marker_template;
+			?>
 		</markers>
 	</div>
-	<?php \eoxia\View_Util::exec( 'annonces', 'annonce', 'main-taxonomies', array( 'taxonomies_datas'   => $taxonomies_datas ) ); ?>
+	<?php
+	$map_template = \annonces\Annonces_Util::get_instance()->get_module_view_path( 'annonce', 'main-taxonomies.view' );
+	include $map_template;
+	?>
 </div>

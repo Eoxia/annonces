@@ -1,19 +1,7 @@
 /**
- * Initialise l'objet annonce dans le namespace eoFrameworkStarter.
- * Permet d'éviter les conflits entre les différents plugins utilisant EO-Framework.
- *
- * Ce fichier JS est une base pour utiliser du JS avec EO-Framework.
- * En lançant la commande "npm start", GULP vas écouter les fichiers *.backend.js et
- * vas s'occuper de les assembler dans le fichier backend.min.js.
- *
- * EO-Framework appel automatiquement la méthode "init" à l'initilisation de certains *pages*
- * du backadmin de WordPress. Ces pages doivent être définis dans le tableau "insert_scripts_page" dans le fichier *.config.json
- * principales de votre plugin.
- * @see https://github.com/Eoxia/task-manager/blob/master/task-manager.config.json pour un exemple
- *
+ * Module Annonce Gmap
  * @since 2.0.0
  */
-window.eoxiaJS.annonces.annonce = {};
 
 /**
  * La méthode "init" est appelé automatiquement par la lib JS de Eo-Framework
@@ -21,13 +9,9 @@ window.eoxiaJS.annonces.annonce = {};
  * @since 2.0.0
  * @return {void}
  */
-window.eoxiaJS.annonces.annonce.init = function() {
-	window.eoxiaJS.annonces.annonce.initMap();
-	window.eoxiaJS.annonces.annonce.event();
-};
-
-window.eoxiaJS.annonces.annonce.event = function() {
-};
+function annonceInit() {
+	annonceInitMap();
+}
 
 /**
  * Init Google Map
@@ -35,11 +19,11 @@ window.eoxiaJS.annonces.annonce.event = function() {
  * @since 2.0.0
  * @return {void}
  */
-window.eoxiaJS.annonces.annonce.initMap = function() {
+function annonceInitMap() {
 	var $map = jQuery( '#annonces-map-wrapper' );
 
 	jQuery( $map ).each(function() {
-		window.eoxiaJS.annonces.annonce.createMap( jQuery( this ) );
+		annonceCreateMap( jQuery( this ) );
 	});
 }
 
@@ -50,7 +34,7 @@ window.eoxiaJS.annonces.annonce.initMap = function() {
  * @param  {Array} map Map wrapper
  * @return {void}
  */
-window.eoxiaJS.annonces.annonce.createMap = function( map ) {
+function annonceCreateMap( map ) {
 	if ( map == undefined || map.length == 0 ) return;
 
 	var $map = map;
@@ -68,8 +52,8 @@ window.eoxiaJS.annonces.annonce.createMap = function( map ) {
 
 
 	jQuery( $markers ).each(function() {
-		var marker = window.eoxiaJS.annonces.annonce.createMarker( $gMap, jQuery( this ) );
-		var infoWindow = window.eoxiaJS.annonces.annonce.createInfoWindow( jQuery( this ) );
+		var marker = annonceCreateMarker( $gMap, jQuery( this ) );
+		var infoWindow = annonceCreateInfoWindow( jQuery( this ) );
 
 		if ( jQuery( this ).html().length != 0 ) {
 			marker.addListener('click', function() {
@@ -83,11 +67,11 @@ window.eoxiaJS.annonces.annonce.createMap = function( map ) {
 
 	jQuery( '.annonces-taxonomies .taxonomy-label' ).on( 'click', function() {
 		if ( jQuery( this ).hasClass( 'active' ) ) {
-			window.eoxiaJS.annonces.annonce.displayMapMarkers( $htmlMarker, $listMarker, null, jQuery( this ).attr( 'data-id' ).split( ',' ) );
+			annonceDisplayMapMarkers( $htmlMarker, $listMarker, null, jQuery( this ).attr( 'data-id' ).split( ',' ) );
 			jQuery( this ).removeClass( 'active' );
 			jQuery( this ).next('.taxonomies-child').find( '.taxonomy-label' ).removeClass( 'active' );
 		} else {
-			window.eoxiaJS.annonces.annonce.displayMapMarkers( $htmlMarker, $listMarker, $gMap, jQuery( this ).attr( 'data-id' ).split( ',' ) );
+			annonceDisplayMapMarkers( $htmlMarker, $listMarker, $gMap, jQuery( this ).attr( 'data-id' ).split( ',' ) );
 			jQuery( this ).addClass( 'active' );
 			jQuery( this ).next('.taxonomies-child').find( '.taxonomy-label' ).addClass( 'active' );
 		}
@@ -103,7 +87,7 @@ window.eoxiaJS.annonces.annonce.createMap = function( map ) {
  * @param  {Array} marker Map marker
  * @return {void}
  */
-window.eoxiaJS.annonces.annonce.createMarker = function( map, marker ) {
+function annonceCreateMarker( map, marker ) {
 	var $map = map;
 	var $marker = marker;
 	var myLatLng = {lat: Number( $marker.attr('lat') ), lng: Number( $marker.attr('lng') )};
@@ -128,7 +112,7 @@ window.eoxiaJS.annonces.annonce.createMarker = function( map, marker ) {
  * @param  {Array} marker Map marker
  * @return {void}
  */
-window.eoxiaJS.annonces.annonce.createInfoWindow = function( marker ) {
+function annonceCreateInfoWindow( marker ) {
 	var $marker = marker;
 
 	return new google.maps.InfoWindow({
@@ -145,7 +129,7 @@ window.eoxiaJS.annonces.annonce.createInfoWindow = function( marker ) {
  * @param  {Array} map Map
  * @return {void}
  */
-window.eoxiaJS.annonces.annonce.displayMapMarkers = function( htmlMarker, listMarkers, map, listTaxId ) {
+function annonceDisplayMapMarkers( htmlMarker, listMarkers, map, listTaxId ) {
 	for (var i = 0; i < listMarkers.length; i++) {
 		var taxonomies = htmlMarker[i].attr( 'taxonomy' ).split( ',' );
 		/** Loop over all markers */

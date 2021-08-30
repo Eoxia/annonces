@@ -22,7 +22,7 @@ defined( 'ABSPATH' ) || exit; ?>
 		while ( have_posts() ) : the_post();
 
 			?>
-			<div class="wpeo-gridlayout grid-4">
+			<div class="gridlayout grid-4">
 				<figure class="label-thumbnail">
 					<?php the_post_thumbnail(); ?>
 				</figure>
@@ -69,7 +69,7 @@ defined( 'ABSPATH' ) || exit; ?>
 					if ( $labels ) : ?>
 						<div class="associated-announces">
 							<h2 class="associated-title"><?php esc_html_e( 'Associated announces', 'annonces' ); ?></h2>
-							<div class="associated-container wpeo-gridlayout grid-2">
+							<div class="associated-container gridlayout grid-2">
 								<?php foreach ( $labels as $label ) :
 									$label_image = get_the_post_thumbnail( $label->ID );
 
@@ -82,7 +82,7 @@ defined( 'ABSPATH' ) || exit; ?>
 									endif;
 									$tax = substr( $tax, 0, -1 );
 									?>
-									<div class="associated-content wpeo-gridlayout grid-3 grid-gap-0">
+									<div class="associated-content gridlayout grid-3 grid-gap-0">
 										<?php if ( ! empty( $label_image ) ) : ?>
 											<figure><a href="<?php echo esc_url( get_permalink( $label->ID ) ); ?>"><?php echo $label_image; ?></a></figure>
 										<?php endif; ?>

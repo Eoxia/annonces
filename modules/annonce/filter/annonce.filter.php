@@ -37,7 +37,7 @@ class Annonce_Filters {
 	 * @return Array $paths Acf folders
 	 */
 	public function annonces_annonce_json_load( $paths ) {
-		$paths[] = PLUGIN_ANNONCES_PATH . 'modules/annonce/asset/json';
+		$paths[] = ANNONCES_PATH . 'modules/annonce/asset/json';
 		return $paths;
 	}
 
@@ -51,20 +51,9 @@ class Annonce_Filters {
 	public function get_custom_post_type_template( $single_template ) {
 		global $post;
 
-		if ( 'announce' === $post->post_type ) {
-			/** Get theme template if exist */
-			$path_to_theme = locate_template( 'single-announce.php' );
-
-			if ( ! empty( $path_to_theme ) ) {
-				$single_template = $path_to_theme;
-			} else {
-				$single_template = str_replace( '\\', '/', PLUGIN_ANNONCES_PATH . '\modules\annonce\view\single-announce.php' );
-			}
-		}
-
-		return $single_template;
+		$view_template = \annonces\Annonces_Util::get_instance()->get_module_view_path( 'annonce', 'single-announce' );
+		return $view_template;
 	}
-
 }
 
 new Annonce_Filters();
