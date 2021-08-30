@@ -13,7 +13,7 @@ namespace annonces;
 
 defined( 'ABSPATH' ) || exit; ?>
 
-<div id="annonces-map-wrapper">
+<div id="annonces-map-wrapper" data-map=<?php echo ! empty( $shortcode_atts['mapargs'] ) ? wp_json_encode( $shortcode_atts['mapargs'] ) : ''; ?>>
 	<div id="annonces-google-map">
 		<markers>
 			<?php
