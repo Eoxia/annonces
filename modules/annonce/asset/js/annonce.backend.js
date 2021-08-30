@@ -49,6 +49,7 @@ function annonceCreateMap( map ) {
 		fullscreenControl: false,
 	};
 	var $gMap = new google.maps.Map( jQuery( $map ).find( '#annonces-google-map' )[0], args );
+	var infoWindowTemp = false;
 
 
 	jQuery( $markers ).each(function() {
@@ -57,6 +58,11 @@ function annonceCreateMap( map ) {
 
 		if ( jQuery( this ).html().length != 0 ) {
 			marker.addListener('click', function() {
+				if ( infoWindowTemp ) {
+					infoWindowTemp.close();
+				}
+
+				infoWindowTemp = infoWindow;
 				infoWindow.open($map, marker);
 			});
 		}
