@@ -51,8 +51,11 @@ class Annonce_Filters {
 	public function get_custom_post_type_template( $single_template ) {
 		global $post;
 
-		$view_template = \annonces\Annonces_Util::get_instance()->get_module_view_path( 'annonce', 'single-announce' );
-		return $view_template;
+		if ( is_singular( 'announce' ) ) {
+			$single_template = \annonces\Annonces_Util::get_instance()->get_module_view_path( 'annonce', 'single-announce' );
+		}
+
+		return $single_template;
 	}
 }
 
