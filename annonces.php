@@ -3,7 +3,7 @@
  * Plugin Name: Annonces
  * Plugin URI:
  * Description: Add all type of announces you need to display in a large map.
- * Version: 2.2.0
+ * Version: 2.3.0
  * Author: Eoxia <dev@eoxia.com>
  * Author URI: http://www.eoxia.com/
  * License: AGPLv3
