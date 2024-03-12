@@ -102,10 +102,10 @@ async function annonceGetAddressAttr(address) {
 	var address
 	let result;
 	try {
-		result = await jQuery.getJSON('http://nominatim.openstreetmap.org/search?q=' + address + '&format=json&polygon=1&addressdetails=1');
+		result = await jQuery.getJSON('https://nominatim.openstreetmap.org/search?q=' + address + '&format=json&polygon=1&addressdetails=1');
 		return result;
 	} catch (error) {
-		console.log(error);
+		console.log(error); 
 	}
 }
 
