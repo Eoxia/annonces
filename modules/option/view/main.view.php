@@ -20,7 +20,18 @@ defined( 'ABSPATH' ) || exit; ?>
 		<input type="hidden" name="action" value="save_annonces_options" />
 		<?php wp_nonce_field( 'save_annonces_options' ); ?>
 
-		<label><?php esc_html_e( 'Google api key', 'annonces' ); ?></label><br>
+		<?php $annonce_library = get_option('annonces_library'); ?>
+		<p><strong><?php esc_html_e( 'Library choice', 'annonces' ); ?></strong></p>
+		<div>
+			<input type="radio" id="gmap" name="annonces_library" value="gmap" <?php checked('gmap', $annonce_library); ?> />
+			<label for="gmap"><?php esc_html_e( 'Google Map', 'annonces' ); ?></label>
+		</div>
+		<div>
+			<input type="radio" id="openstreetmap" name="annonces_library" value="openstreetmap" <?php checked('openstreetmap', $annonce_library); ?>  />
+			<label for="openstreetmap"><?php esc_html_e( 'Open Street Map', 'annonces' ); ?></label>
+		</div>
+
+		<p><strong><?php esc_html_e( 'Google api key', 'annonces' ); ?></strong></p>
 		<input type="text" name="annonces_google_key" class="form-field" value="<?php echo esc_attr( get_option( 'annonces_google_key', '' ) ); ?>" />
 		<p><a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank"><?php esc_html_e( 'Obtain a google map api key', 'annonces' ); ?></a></p>
 

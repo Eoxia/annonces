@@ -27,6 +27,7 @@ class Annonce_Filters {
 	public function __construct() {
 		add_filter( 'acf/settings/load_json', array( $this, 'annonces_annonce_json_load' ) );
 		add_filter( 'single_template', array( $this, 'get_custom_post_type_template' ), 11 );
+		add_filter( 'acf/load_field', array( $this, 'display_hide_fields' ) );
 	}
 
 	/**
@@ -56,6 +57,23 @@ class Annonce_Filters {
 		}
 
 		return $single_template;
+	}
+
+	public function display_hide_fields( $field ) {
+		// Masquer les chams Open Street Map.
+		if ( 'gmap' == get_option( 'annonces_library' ) ) {
+			if ( $field['name'] == 'adresse_complete' || $field['name'] == 'lat' || $field['name'] == 'lng' ) {
+				return;
+			}
+		}
+		// Masquer les chams Google.
+		if ( 'openstreetmap' == get_option( 'annonces_library' ) ) {
+			if ( $field['name'] == 'address' ) {
+				return;
+			}
+		}
+
+		return $field;
 	}
 }
 

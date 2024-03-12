@@ -40,7 +40,20 @@ class Annonce_Shortcode {
 		if ( ! empty( $annonces_map_query->posts ) ) {
 			foreach ( $annonces_map_query->posts as &$annonce ) {
 				/** Address field */
-				$annonce->address = get_field( 'address', $annonce->ID );
+				if ( 'gmap' == get_option( 'annonces_library' ) ) {
+					$annonce_gmap = get_field( 'address', $annonce->ID );
+					if ( ! empty( $annonce_gmap ) ) {
+						$annonce->address = $annonce_gmap['address'];
+						$annonce->lat     = $annonce_gmap['lat'];
+						$annonce->lng     = $annonce_gmap['lng'];
+					}
+				}
+				if ( 'openstreetmap' == get_option( 'annonces_library' ) ) {
+					$annonce->address = esc_html( get_field( 'adresse_complete', $annonce->ID ) );
+					$annonce->lat     = esc_html( get_field( 'lat', $annonce->ID ) );
+					$annonce->lng     = esc_html( get_field( 'lng', $annonce->ID ) );
+				}
+
 				/** Datas to display in infowindow */
 				$microdata      = array(
 					array(
@@ -56,7 +69,7 @@ class Annonce_Shortcode {
 					array(
 						'icon'    => 'map-marker-alt',
 						'title'   => __( 'Address', 'annonces' ),
-						'content' => $annonce->address['address'],
+						'content' => $annonce->address,
 					),
 				);
 				$annonce->datas = apply_filters( 'set_marker_data', $microdata, $annonce->ID );

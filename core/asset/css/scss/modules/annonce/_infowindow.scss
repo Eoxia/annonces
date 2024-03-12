@@ -5,6 +5,9 @@
 		margin: 0;
 	}
 }
+#annonces-google-map markers {
+  visibility: hidden;
+}
 
 .marker-container .content {
 	.content-title {

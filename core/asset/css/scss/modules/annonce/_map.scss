@@ -17,6 +17,7 @@
 	width: 100%;
 	max-width: 240px;
 	box-shadow: 0 0 40px rgba(0,0,0,0.2);
+  z-index: 99999;
 
 	@media ( max-width: $media__medium ) {
 		left: 0;
