@@ -116,6 +116,27 @@ class Annonce_Shortcode {
 		$filter_title                       = __( 'Announces', 'annonces' );
 		$taxonomies_datas->taxonomies_title = apply_filters( 'bloc_filter_title', $filter_title );
 
+		$shortcode_atts = shortcode_atts( array(
+			'mapargs' => '',
+		), $atts, 'annonces' );
+
+		if ( ! empty( $shortcode_atts['mapargs'] ) ) {
+			$map_args      = array();
+			$map_args_data = explode( ',', $shortcode_atts['mapargs'] );
+			foreach ( $map_args_data as $map_arg ) {
+				$arg        = explode( ':', $map_arg ); // Separe name and value
+				$parenthese = preg_match( '#\(+(.*)\)+#', $arg[1], $value_type ); // Get value type in parenthesis
+				$arg_value  = preg_replace( '#\(+(.*)\)+#', '', $arg[1]); // Delete value type
+				if ( ! empty( $value_type ) ) {
+					settype($arg_value, $value_type[1]); // Change type of value according to parenthesis
+				}
+
+				$map_args[$arg[0]] = $arg_value;
+			}
+
+			$shortcode_atts['mapargs'] = $map_args;
+		}
+
 		ob_start();
 			$view_path = \annonces\Annonces_Util::get_instance()->get_module_view_path( 'annonce', 'main.view' );
 			include $view_path;

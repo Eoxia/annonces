@@ -43,12 +43,15 @@ function annonceCreateMap( map ) {
 	var myLatlng = new google.maps.LatLng($markers.attr('lat'),$markers.attr('lng'));
 	var $listMarker = [];
 	var $htmlMarker = [];
-	var args = {
+	var defaultArgs = {
 		zoom: 8,
 		center: myLatlng,
 		fullscreenControl: false,
 	};
-	var $gMap = new google.maps.Map( jQuery( $map ).find( '#annonces-google-map' )[0], args );
+	var customArgs = $map.data('map');
+	var infoWindowTemp = false;
+
+	var $gMap = new google.maps.Map( jQuery( $map ).find( '#annonces-google-map' )[0], jQuery.extend( defaultArgs, customArgs ) );
 
 
 	jQuery( $markers ).each(function() {
@@ -57,6 +60,11 @@ function annonceCreateMap( map ) {
 
 		if ( jQuery( this ).html().length != 0 ) {
 			marker.addListener('click', function() {
+				if ( infoWindowTemp ) {
+					infoWindowTemp.close();
+				}
+
+				infoWindowTemp = infoWindow;
 				infoWindow.open($map, marker);
 			});
 		}
