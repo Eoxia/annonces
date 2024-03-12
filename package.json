@@ -20,6 +20,7 @@
     "gulp-rename": "latest",
     "gulp-sass": "latest",
     "gulp-uglify": "latest",
-    "gulp-watch": "latest"
+    "gulp-watch": "latest",
+    "sass": "latest"
   }
 }

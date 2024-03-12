@@ -1,41 +1,105 @@
-    {
-        "key": "group_5b35ea4f633bc",
-        "title": "Annonces - Address",
-        "fields": [
-            {
-                "key": "field_5b35ea561aceb",
-                "label": "Address",
-                "name": "address",
-                "type": "google_map",
-                "instructions": "",
-                "required": 1,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "center_lat": "",
-                "center_lng": "",
-                "zoom": "",
-                "height": ""
-            }
-        ],
-        "location": [
-            [
-                {
-                    "param": "post_type",
-                    "operator": "==",
-                    "value": "announce"
-                }
-            ]
-        ],
-        "menu_order": 0,
-        "position": "normal",
-        "style": "default",
-        "label_placement": "top",
-        "instruction_placement": "label",
-        "hide_on_screen": "",
-        "active": 1,
-        "description": ""
-    }
+[
+  {
+    "key": "group_5b35ea4f633bc",
+    "title": "Annonces - Address",
+    "fields": [
+      {
+        "key": "field_65f020c4aa018",
+        "label": "Adresse complète",
+        "name": "adresse_complete",
+        "aria-label": "",
+        "type": "text",
+        "instructions": "",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        },
+        "default_value": "",
+        "maxlength": "",
+        "placeholder": "",
+        "prepend": "",
+        "append": ""
+      },
+      {
+        "key": "field_65f02100aa019",
+        "label": "Lat (optionnel)",
+        "name": "lat",
+        "aria-label": "",
+        "type": "text",
+        "instructions": "",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "50",
+          "class": "",
+          "id": ""
+        },
+        "default_value": "",
+        "maxlength": "",
+        "placeholder": "",
+        "prepend": "",
+        "append": ""
+      },
+      {
+        "key": "field_65f02114aa01a",
+        "label": "Lng (optionnel)",
+        "name": "lng",
+        "aria-label": "",
+        "type": "text",
+        "instructions": "",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "50",
+          "class": "",
+          "id": ""
+        },
+        "default_value": "",
+        "maxlength": "",
+        "placeholder": "",
+        "prepend": "",
+        "append": ""
+      },
+      {
+        "key": "field_5b35ea561aceb",
+        "label": "Address",
+        "name": "address",
+        "aria-label": "",
+        "type": "google_map",
+        "instructions": "",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+          "width": "",
+          "class": "",
+          "id": ""
+        },
+        "center_lat": "",
+        "center_lng": "",
+        "zoom": "",
+        "height": ""
+      }
+    ],
+    "location": [
+      [
+        {
+          "param": "post_type",
+          "operator": "==",
+          "value": "announce"
+        }
+      ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0
+  }
+]

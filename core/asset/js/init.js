@@ -4,5 +4,11 @@
  */
 jQuery( document ).ready(function() {
 	/** Lancer les fonctions init */
-	annonceInit();
+	if ( annonces_data.library == 'gmap' ) {
+		annonceInit();
+	}
+	if ( annonces_data.library == 'openstreetmap' ) {
+		annonceOSMapInit();
+	}
+
 })

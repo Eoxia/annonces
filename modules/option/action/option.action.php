@@ -28,6 +28,7 @@ class Option_Action {
 		add_action('admin_menu', array($this, 'callback_admin_menu'));
 //		add_action('wp_ajax_save_annonces_options', array($this, 'callback_save_annonces_options'));
 		add_action('admin_init', array($this, 'add_permalink_setting'));
+		add_action('admin_init', array($this, 'default_settings'));
 		add_action('load-options-permalink.php', array($this, 'update_permalink_setting_value'));
 	}
 
@@ -42,6 +43,18 @@ class Option_Action {
 	}
 
 	/**
+	 * Set default settings if none configured
+	 *
+	 * @since 2.4.0
+	 * @return void
+	 */
+	public function default_settings() {
+		if ( empty( get_option( 'annonces_library' ) ) ) {
+			update_option('annonces_library', 'gmap');
+		}
+	}
+
+	/**
 	 * Display view of the submenu "Announces Options".
 	 *
 	 * @since 2.0.0
@@ -51,6 +64,11 @@ class Option_Action {
 		if ( isset( $_POST['annonces_google_key'] ) ) {
 			$google_key = !empty($_POST['annonces_google_key']) ? sanitize_text_field($_POST['annonces_google_key']) : '';
 			update_option('annonces_google_key', $google_key);
+		}
+		if ( isset( $_POST['annonces_library'] ) ) {
+
+			$annonces_library = !empty($_POST['annonces_library']) ? $_POST['annonces_library'] : '';
+			update_option('annonces_library', $annonces_library);
 		}
 
 		$view_path = \annonces\Annonces_Util::get_instance()->get_module_view_path('option', 'main.view');

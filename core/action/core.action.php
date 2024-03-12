@@ -51,11 +51,15 @@ class Core_Action {
 	 * @return void nothing
 	 */
 	public function callback_front_enqueue_scripts() {
+		/** Leaflet for OpenStreetMap */
+		wp_enqueue_style( 'annonces-leaflet-css', ANNONCES_URL . 'core/asset/css/inc/leaflet.css' );
+		wp_enqueue_script( 'annonces-leaflet-script', ANNONCES_URL . 'core/asset/js/inc/leaflet.js' );
+
 		wp_enqueue_style( 'annonces-frontend-style', ANNONCES_URL . 'core/asset/css/style.css' );
 
 		/** URl of module in javascipt */
 		wp_register_script( 'annonces-frontend-script', ANNONCES_URL . 'core/asset/js/backend.min.js', 'jquery' );
-		wp_localize_script( 'annonces-frontend-script', 'annonces_data', array( 'url' => ANNONCES_URL ) );
+		wp_localize_script( 'annonces-frontend-script', 'annonces_data', array( 'url' => ANNONCES_URL, 'library' => get_option( 'annonces_library' ) ) );
 		wp_enqueue_script( 'annonces-frontend-script' );
 
 		/** Aller chercher la clé entrée dans les options de configuration */

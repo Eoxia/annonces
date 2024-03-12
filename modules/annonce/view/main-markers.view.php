@@ -16,8 +16,9 @@ defined( 'ABSPATH' ) || exit;
 if ( ! empty( $annonces_map_query->posts ) ) :
 	foreach ( $annonces_map_query->posts as $marker_annonce ) : ?>
 		<marker id="<?php echo esc_html( $marker_annonce->ID ); ?>"
-		lat="<?php echo esc_html( $marker_annonce->address['lat'] ); ?>"
-		lng="<?php echo esc_html( $marker_annonce->address['lng'] ); ?>"
+		lat="<?php echo ! empty ( $marker_annonce->lat ) ? $marker_annonce->lat : ''; ?>"
+		lng="<?php echo ! empty( $marker_annonce->lng ) ? $marker_annonce->lng : ''; ?>"
+		address="<?php echo ! empty( $marker_annonce->address ) ? $marker_annonce->address : ''; ?>"
 		taxonomy="<?php echo esc_attr( $marker_annonce->tax ); ?>"
 		pin="<?php echo ( ! empty( $marker_annonce->pin ) ) ? esc_html( $marker_annonce->pin ) : 'red'; ?>">
 			<div class="marker-container gridlayout grid-2">
